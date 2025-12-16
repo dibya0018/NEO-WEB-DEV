@@ -4,7 +4,7 @@ import { motion } from "framer-motion"
 import { Clock, Bed, Scissors, FileCheck, CreditCard } from "lucide-react"
 import { HoverCard3D } from "./hover-card-3d"
 import { ScrollAnimatedSection } from "./scroll-animated-section"
-
+import { useState, useEffect } from "react" 
 const reasons = [
   {
     icon: Clock,
@@ -34,16 +34,24 @@ const reasons = [
 ]
 
 export function WhyChooseUs() {
+  const [dots, setDots] = useState<Array<{left: number, top: number}>>([])
+  useEffect(() => {
+    // This will only run on the client side
+    setDots(Array(10).fill(0).map(() => ({
+      left: Math.random() * 100,
+      top: Math.random() * 100
+    })))
+  }, [])
   return (
     <section id="about" className="py-20 bg-muted/30 relative overflow-hidden">
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(10)].map((_, i) => (
+        {dots.map((dot, i) => (
           <motion.div
             key={i}
             className="absolute w-2 h-2 rounded-full bg-[#65349E]/20"
             style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
+              left: `${dot.left}%`,
+              top: `${dot.top}%`,
             }}
             animate={{
               scale: [0, 1.5, 0],
@@ -57,7 +65,6 @@ export function WhyChooseUs() {
           />
         ))}
       </div>
-
       <div className="container mx-auto px-4 relative">
         <ScrollAnimatedSection>
           <motion.div
