@@ -106,7 +106,7 @@ const itemVariants = {
     scale: 1,
     transition: {
       duration: 0.5,
-      type: "spring",
+       type: "spring" as const,
       stiffness: 100,
     },
   },
@@ -164,7 +164,7 @@ export default function DADPage() {
         </div>
 
         <div className="container mx-auto px-4 relative">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-12 items-start">
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
@@ -268,14 +268,17 @@ export default function DADPage() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="relative"
             >
-              <motion.div whileHover={{ scale: 1.02 }} className="relative rounded-3xl overflow-hidden shadow-2xl">
-                <img
-                  src="/doctor-on-phone-telemedicine-emergency-consultatio.jpg"
-                  alt="D.A.D - Dial A Doctor"
-                  className="w-full h-auto object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-              </motion.div>
+             <motion.div 
+              whileHover={{ scale: 1.02 }} 
+              className="relative rounded-3xl overflow-hidden shadow-2xl w-[85%] mx-auto"  // Reduced from w-[90%]
+            >
+            <img
+            src="/replace.jpeg"
+            alt="D.A.D - Dial A Doctor"
+            className="w-full h-auto object-cover"
+             />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+            </motion.div>
 
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -283,7 +286,14 @@ export default function DADPage() {
                 transition={{ delay: 0.8 }}
                 className="absolute -bottom-6 left-6 right-6 bg-white rounded-2xl p-6 shadow-xl"
               >
-                <motion.div animate={{ y: [0, -5, 0] }} transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY }}>
+                <motion.div 
+                animate={{ y: [0, -5] }} 
+                transition={{ 
+                 duration: 3, 
+                 repeat: Number.POSITIVE_INFINITY,
+                 repeatType: "reverse"
+                }}
+                >
                   <div className="flex items-center gap-4">
                     <motion.div
                       animate={{ rotate: [0, -10, 10, -10, 0] }}

@@ -35,7 +35,7 @@ export function Header() {
         <div className="flex h-16 items-center justify-between">
           <Link href="/" className="flex items-center gap-2">
             <Image
-              src="/neotruenorth-hospitals-logo.png"
+              src="/new_logo.png"
               alt="NeoTrueNorth Hospitals Logo"
               width={200}
               height={50}

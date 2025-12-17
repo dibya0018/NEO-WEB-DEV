@@ -42,7 +42,7 @@ export function DADSection() {
           >
             <div className="relative rounded-2xl overflow-hidden">
               <img
-                src="/doctor-on-phone-call-telemedicine-consultation.jpg"
+               src="/replace_1.jpeg"
                 alt="D.A.D - Dial A Doctor Service"
                 className="w-full h-auto object-cover rounded-2xl"
               />

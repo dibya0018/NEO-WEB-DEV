@@ -5,13 +5,19 @@ import { Calendar, Clock, Shield, Heart } from "lucide-react"
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden bg-white min-h-[700px] lg:min-h-[800px] flex items-center justify-center">
-      <div className="absolute inset-0 z-0">
-        <img
-          src="/neo-look.avif"
-          alt="Neo TrueNorth Hospital"
-          className="w-full h-full object-cover object-center md:object-center"
-        />
+    <section className="relative overflow-hidden bg-white h-screen flex items-center justify-center">
+  <div className="absolute inset-0 z-0">
+    <video
+      autoPlay
+      loop
+      muted
+      playsInline
+      preload="auto"
+      className="absolute inset-0 w-full h-full object-cover"
+    >
+      <source src="/hospital_video.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
         {/* Lighter overlay for better image visibility on mobile */}
         <div className="absolute inset-0 bg-gradient-to-b from-white/60 via-white/50 to-white/60 md:from-white/70 md:via-white/60 md:to-white/70" />
       </div>

@@ -10,7 +10,7 @@ export function Footer() {
           <div className="space-y-4">
             <Link href="/" className="flex items-center gap-2">
               <Image
-                src="/neotruenorth-hospitals-logo.png"
+                src="/new_logo.png"
                 alt="NeoTrueNorth Hospitals Logo"
                 width={200}
                 height={50}
@@ -38,6 +38,52 @@ export function Footer() {
                 <Linkedin className="h-5 w-5" />
               </a>
             </div>
+           
+            <div className="flex flex-row gap-8 mt-4">
+             {/* Google Play */}
+             <div className="flex flex-col items-center">
+            <img
+             src="/scan_1.png"
+             alt="Google Play QR Code"
+             className="w-24 h-24 object-contain mb-1"  // Changed from mb-2 to mb-1
+             />
+             <a 
+              href="https://play.google.com/store/apps/details?id=com.better.neotruenorth&hl=en_US" 
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block w-32 -mt-1"  // Also added -mt-1 to pull the badge up slightly
+            >
+             <img
+             src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
+               alt="Get it on Google Play"
+             className="w-29 h-auto"
+              style={{ maxHeight: '55px' }}
+               />
+            </a>
+           </div>
+
+       {/* App Store */}
+             <div className="flex flex-col items-center">
+             <img
+               src="/scan_2.png"
+               alt="App Store QR Code"
+                className="w-24 h-24 object-contain mb-2"
+                 />
+                 <a 
+                    href="https://apps.apple.com/in/app/neo-tru-north-hospitals/id6756440509" 
+                   target="_blank"
+                    rel="noopener noreferrer"
+                    className="block w-32"
+                      >
+                    <img
+                     src="https://developer.apple.com/app-store/marketing/guidelines/images/badge-download-on-the-app-store.svg"
+                     alt="Download on the App Store"
+                     className="w-36 h-auto"  // Reduced width to match visual weight
+                     style={{ maxHeight: '30px' }}  // Added to match height
+                  />
+                 </a>
+                </div>
+           </div>
           </div>
 
           <div>
@@ -118,7 +164,18 @@ export function Footer() {
         </div>
 
         <div className="border-t border-background/20 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-background/60 text-sm">© 2025 Neo TrueNorth. All rights reserved.</p>
+           <p className="text-background/60 text-sm">
+           © {new Date().getFullYear()} Neo TrueNorth. All rights reserved | Developed by{' '}
+           <a 
+              href="https://www.bipminds.com/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="hover:underline hover:text-background transition-colors"
+            >
+           BIPMINDS
+          </a>
+          .
+          </p>
           <div className="flex gap-6 text-background/60 text-sm">
             <a href="#" className="hover:text-background transition-colors">
               Privacy Policy
