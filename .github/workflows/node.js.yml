@@ -1,48 +1,35 @@
-name: Build and Deploy Next.js to Hostinger
+name: Deploy via FTP
 
 on:
   push:
     branches: [ "main" ]
 
 jobs:
-  build-and-deploy:
+  web-deploy:
+    name: Deploy
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout Code
+    - name: Get latest code
       uses: actions/checkout@v4
-
-    - name: Setup Node.js
+    
+    - name: Setup Node
       uses: actions/setup-node@v4
       with:
         node-version: '20'
-        cache: 'npm'
-
-    - name: Install Dependencies
-      run: npm ci
-
-    - name: Build Static Site
-      run: npm run build
-      # This runs "next build". With output: 'export' in config, 
-      # it generates an "out" folder.
-
-    - name: Configure SSH
+    
+    - name: Install & Build
       run: |
-        mkdir -p ~/.ssh/
-        echo "${{ secrets.HOSTINGER_SSH_KEY }}" > ~/.ssh/id_rsa
-        chmod 600 ~/.ssh/id_rsa
-        ssh-keyscan -p ${{ secrets.HOSTINGER_SSH_PORT }} -H ${{ secrets.HOSTINGER_SSH_HOST }} >> ~/.ssh/known_hosts
+        npm ci
+        npm run build
+        # This creates the 'out' folder
 
-    - name: Deploy to Hostinger
-      run: |
-        # Next.js static export folder is "out"
-        SOURCE_DIR="out/" 
-        
-        echo "Cleaning remote public_html..."
-        ssh -p ${{ secrets.HOSTINGER_SSH_PORT }} -i ~/.ssh/id_rsa ${{ secrets.HOSTINGER_SSH_USER }}@${{ secrets.HOSTINGER_SSH_HOST }} "rm -rf public_html/*"
-        
-        echo "Uploading new build..."
-        # We copy the CONTENTS of out/ into public_html/
-        rsync -avz -e "ssh -p ${{ secrets.HOSTINGER_SSH_PORT }} -i ~/.ssh/id_rsa" ./$SOURCE_DIR ${{ secrets.HOSTINGER_SSH_USER }}@${{ secrets.HOSTINGER_SSH_HOST }}:public_html/
-
-        echo "Deployment Complete!"
+    - name: Sync files
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      with:
+        server: ${{ secrets.HOSTINGER_SSH_HOST }}
+        username: ${{ secrets.HOSTINGER_SSH_USER }}
+        password: ${{ secrets.HOSTINGER_PASSWORD }}
+        local-dir: ./out/
+        server-dir: ./public_html/
+        # This option deletes old files on the server automatically
+        dangerous-clean-slate: true
