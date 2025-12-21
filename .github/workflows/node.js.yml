@@ -1,46 +1,47 @@
-name: Build and Deploy Next.js
+name: Deploy to Hostinger (FTP)
 
 on:
   push:
     branches: [ "main" ]
 
 jobs:
-  build-and-deploy:
+  web-deploy:
+    name: Build & Deploy
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout Code
+    # 1. Get the code
+    - name: Get latest code
       uses: actions/checkout@v4
 
-    - name: Setup Node.js
+    # 2. Setup Node.js
+    - name: Setup Node
       uses: actions/setup-node@v4
       with:
         node-version: '20'
         cache: 'npm'
 
-    - name: Install Dependencies
-      run: npm ci
-
-    - name: Build Static Site
-      run: npm run build
-      # Generates "out" folder
-
-    # Install sshpass to allow password login
-    - name: Install sshpass
-      run: sudo apt-get install -y sshpass
-
-    - name: Deploy to Hostinger
+    # 3. Build the project
+    - name: Install & Build
       run: |
-        SOURCE_DIR="out/"
-        
-        # 1. CLEAN REMOTE FOLDER
-        # We use sshpass to inject the password. 
-        # StrictHostKeyChecking=no prevents the "Are you sure?" prompt.
-        echo "Cleaning remote public_html..."
-        sshpass -p "${{ secrets.HOSTINGER_PASSWORD }}" ssh -o StrictHostKeyChecking=no -p ${{ secrets.HOSTINGER_SSH_PORT }} ${{ secrets.HOSTINGER_SSH_USER }}@${{ secrets.HOSTINGER_SSH_HOST }} "rm -rf public_html/*"
-        
-        # 2. UPLOAD NEW BUILD
-        echo "Uploading new build..."
-        sshpass -p "${{ secrets.HOSTINGER_PASSWORD }}" rsync -avz -e "ssh -p ${{ secrets.HOSTINGER_SSH_PORT }} -o StrictHostKeyChecking=no" ./$SOURCE_DIR ${{ secrets.HOSTINGER_SSH_USER }}@${{ secrets.HOSTINGER_SSH_HOST }}:public_html/
+        npm ci
+        npm run build
+        # Because of "output: export" in next.config.mjs, 
+        # this will generate an "out" folder.
 
-        echo "Deployment Complete!"
+    # 4. Upload via FTP
+    - name: Sync files to Hostinger
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      with:
+        server: ${{ secrets.FTP_SERVER }}
+        username: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        
+        # The folder Next.js builds to:
+        local-dir: ./out/
+        
+        # The exact path on Hostinger:
+        server-dir: /home/u168471611/domains/neotruhospitals.com/public_html/
+        
+        # This deletes old files in that folder before uploading (Clean Install)
+        dangerous-clean-slate: true
