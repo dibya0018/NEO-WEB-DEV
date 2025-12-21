@@ -41,7 +41,7 @@ jobs:
         local-dir: ./out/
         
         # The exact path on Hostinger:
-        server-dir: /home/u168471611/domains/neotruhospitals.com/public_html/
+        server-dir: /public_html/
         
         # This deletes old files in that folder before uploading (Clean Install)
         dangerous-clean-slate: true
