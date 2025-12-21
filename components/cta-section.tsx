@@ -7,7 +7,7 @@ import { Phone, CreditCard, ArrowRight } from "lucide-react"
 
 export function CTASection() {
   return (
-    <section className="py-20 relative overflow-hidden">
+    <section className="py-12 sm:py-16 md:py-20 relative overflow-hidden">
       <div className="absolute inset-0 gradient-bg" />
       <motion.div
         initial={{ opacity: 0 }}
@@ -19,7 +19,7 @@ export function CTASection() {
         }}
       />
 
-      <div className="container mx-auto px-4 relative">
+      <div className="container mx-auto px-4 sm:px-6 relative">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -27,10 +27,10 @@ export function CTASection() {
           transition={{ duration: 0.6 }}
           className="text-center max-w-3xl mx-auto"
         >
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 text-balance">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 sm:mb-6 text-balance px-2">
             Don't Wait for an Emergency to Find Help
           </h2>
-          <p className="text-white/80 text-lg mb-8 max-w-2xl mx-auto">
+          <p className="text-white/80 text-base sm:text-lg mb-6 sm:mb-8 max-w-2xl mx-auto px-4">
             Get your Emergency Access Card today and ensure your family has priority access to life-saving care when
             every second counts.
           </p>
@@ -40,29 +40,29 @@ export function CTASection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="flex flex-wrap justify-center gap-4"
+            className="flex flex-wrap justify-center gap-3 sm:gap-4 px-4"
           >
             <Button
               size="lg"
               variant="secondary"
-              className="gap-2 h-12 px-6 bg-white text-[#65349E] hover:bg-white/90"
+              className="gap-2 h-11 sm:h-12 px-5 sm:px-6 bg-white text-[#65349E] hover:bg-white/90 text-sm sm:text-base w-full sm:w-auto whitespace-nowrap"
               asChild
             >
               <a href="tel:9900089601">
-                <Phone className="h-5 w-5" />
-                Call D.A.D - 99000 89602
+                <Phone className="h-4 w-4 sm:h-5 sm:w-5" />
+                <span className="whitespace-nowrap">Call D.A.D - 99000 89602</span>
               </a>
             </Button>
             <Button
               size="lg"
               variant="outline"
-              className="gap-2 h-12 px-6 border-white text-white hover:bg-white/10 bg-transparent"
+              className="gap-2 h-11 sm:h-12 px-5 sm:px-6 border-white text-white hover:bg-white/10 bg-transparent text-sm sm:text-base w-full sm:w-auto"
               asChild
             >
               <Link href="/emergency-card">
-                <CreditCard className="h-5 w-5" />
+                <CreditCard className="h-4 w-4 sm:h-5 sm:w-5" />
                 Get Emergency Card
-                <ArrowRight className="h-4 w-4" />
+                <ArrowRight className="h-3 w-3 sm:h-4 sm:w-4" />
               </Link>
             </Button>
           </motion.div>
@@ -72,7 +72,7 @@ export function CTASection() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.4 }}
-            className="text-white/60 text-sm mt-8"
+            className="text-white/60 text-xs sm:text-sm mt-6 sm:mt-8"
           >
             Available 24x7 - Bengaluru & Expanding
           </motion.p>

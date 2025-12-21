@@ -222,15 +222,15 @@ export default function DADPage() {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
-                <Button size="lg" className="gradient-bg text-white hover:opacity-90 gap-2 h-14 px-8 text-lg" asChild>
+                <Button size="lg" className="gradient-bg text-white hover:opacity-90 gap-2 h-14 px-4 sm:px-8 text-base sm:text-lg whitespace-nowrap" asChild>
                   <a href="tel:9900089601">
                     <motion.div
                       animate={{ rotate: [0, -10, 10, -10, 0] }}
                       transition={{ repeat: Number.POSITIVE_INFINITY, duration: 1.5, repeatDelay: 2 }}
                     >
-                      <Phone className="h-6 w-6" />
+                      <Phone className="h-5 w-5 sm:h-6 sm:w-6" />
                     </motion.div>
-                    Call D.A.D - 99000 89602
+                    <span className="whitespace-nowrap">Call D.A.D - 99000 89602</span>
                   </a>
                 </Button>
               </motion.div>
@@ -284,7 +284,7 @@ export default function DADPage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.8 }}
-                className="absolute -bottom-6 left-16 right-16 bg-white rounded-2xl p-6 shadow-xl"
+                className="absolute -bottom-6 left-4 right-4 sm:left-16 sm:right-16 bg-white rounded-2xl p-4 sm:p-6 shadow-xl overflow-hidden"
               >
                 <motion.div 
                 animate={{ y: [0, -5] }} 
@@ -294,17 +294,17 @@ export default function DADPage() {
                  repeatType: "reverse"
                 }}
                 >
-                  <div className="flex items-center gap-4">
+                  <div className="flex items-center gap-3 sm:gap-4 min-w-0">
                     <motion.div
                       animate={{ rotate: [0, 10] }}
                       transition={{ repeat: Number.POSITIVE_INFINITY, duration: 1.5, repeatDelay: 2, repeatType: "reverse", ease: "easeInOut" }}
-                      className="w-16 h-16 rounded-full gradient-bg flex items-center justify-center"
+                      className="w-12 h-12 sm:w-16 sm:h-16 rounded-full gradient-bg flex items-center justify-center flex-shrink-0"
                     >
-                      <Phone className="h-8 w-8 text-white" />
+                      <Phone className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
                     </motion.div>
-                    <div>
-                      <p className="text-sm text-muted-foreground">Emergency Helpline</p>
-                      <p className="text-3xl font-bold">99000 89602</p>
+                    <div className="min-w-0 flex-1">
+                      <p className="text-xs sm:text-sm text-muted-foreground">Emergency Helpline</p>
+                      <p className="text-lg sm:text-2xl md:text-3xl font-bold whitespace-nowrap overflow-hidden text-ellipsis">99000 89602</p>
                     </div>
                   </div>
                 </motion.div>
@@ -526,12 +526,12 @@ export default function DADPage() {
               <Button
                 size="lg"
                 variant="secondary"
-                className="gap-2 h-12 px-8 bg-white text-[#65349E] hover:bg-white/90"
+                className="gap-2 h-12 px-4 sm:px-8 bg-white text-[#65349E] hover:bg-white/90 whitespace-nowrap"
                 asChild
               >
                 <a href="tel:9900089602">
                   <Phone className="h-5 w-5" />
-                  Call D.A.D - 99000 89602
+                  <span className="whitespace-nowrap">Call D.A.D - 99000 89602</span>
                 </a>
               </Button>
             </motion.div>

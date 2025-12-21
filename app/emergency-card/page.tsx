@@ -177,11 +177,11 @@ export default function EmergencyCardPage() {
   }
 
   return (
-    <main className="min-h-screen bg-white">
+    <main className="h-screen bg-white overflow-hidden flex flex-col">
       <Header />
 
       {/* Hero Section */}
-      <section className="relative py-20 lg:py-28 overflow-hidden">
+      <section className="flex-shrink-0 relative py-12 lg:py-16 overflow-hidden">
         <div className="absolute inset-0 overflow-hidden">
           <motion.div
             animate={{
@@ -204,12 +204,12 @@ export default function EmergencyCardPage() {
         </div>
 
         <div className="container mx-auto px-4 relative">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-8 items-center">
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, type: "spring" }}
-              className="space-y-8"
+              className="space-y-4 sm:space-y-6"
             >
               <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
@@ -221,7 +221,7 @@ export default function EmergencyCardPage() {
                 Emergency Access Card
               </motion.div>
 
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
                 <motion.span
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -244,7 +244,7 @@ export default function EmergencyCardPage() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.5 }}
-                className="text-xl text-muted-foreground leading-relaxed"
+                className="text-base sm:text-lg md:text-xl text-muted-foreground leading-relaxed"
               >
                 The Neo TrueNorth Emergency Access Card ensures you and your family receive{" "}
                 <span className="font-semibold text-foreground">priority emergency treatment</span> without worrying
@@ -284,111 +284,108 @@ export default function EmergencyCardPage() {
         </div>
       </section>
 
-      {/* Benefits Section */}
-      <section className="py-20 bg-muted/30">
-        <div className="container mx-auto px-4">
+      {/* Benefits Section - Swipeable Carousel */}
+      <section className="flex-1 bg-muted/30 overflow-hidden flex flex-col">
+        <div className="container mx-auto px-4 py-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center max-w-2xl mx-auto mb-16"
+            animate={{ opacity: 1, y: 0 }}
+            className="text-center max-w-2xl mx-auto mb-8"
           >
             <motion.span
               initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
+              animate={{ opacity: 1, scale: 1 }}
               className="inline-block text-sm font-semibold gradient-text uppercase tracking-wider px-4 py-1 rounded-full bg-[#65349E]/10"
             >
               Card Benefits
             </motion.span>
-            <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mt-4 mb-6">
               Why Get the <span className="gradient-text">Emergency Access Card</span>
             </h2>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {benefits.map((benefit, index) => (
-              <AnimatedCard
-                key={index}
-                icon={benefit.icon}
-                title={benefit.title}
-                description={benefit.description}
-                index={index}
-              />
-            ))}
+          <div className="relative overflow-hidden">
+            <motion.div
+              className="flex gap-6 cursor-grab active:cursor-grabbing"
+              drag="x"
+              dragConstraints={{ left: -((benefits.length - 1) * 320), right: 0 }}
+              dragElastic={0.2}
+              whileDrag={{ cursor: "grabbing" }}
+            >
+              {benefits.map((benefit, index) => (
+                <motion.div
+                  key={index}
+                  className="flex-shrink-0 w-80"
+                  initial={{ opacity: 0, x: 50 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                >
+                  <AnimatedCard
+                    icon={benefit.icon}
+                    title={benefit.title}
+                    description={benefit.description}
+                    index={index}
+                  />
+                </motion.div>
+              ))}
+            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* How It Works - Using AnimatedFlowchart */}
-      <section className="py-20 bg-gradient-to-b from-white to-muted/20">
-        <div className="container mx-auto px-4">
+      {/* Who It's For - Swipeable Carousel */}
+      <section className="flex-1 bg-muted/30 overflow-hidden flex flex-col">
+        <div className="container mx-auto px-4 py-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center max-w-2xl mx-auto mb-16"
+            animate={{ opacity: 1, y: 0 }}
+            className="text-center max-w-2xl mx-auto mb-8"
           >
             <motion.span
               initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              className="inline-block text-sm font-semibold gradient-text uppercase tracking-wider px-4 py-1 rounded-full bg-[#65349E]/10"
-            >
-              Simple Process
-            </motion.span>
-            <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6">
-              How to Get <span className="gradient-text">Your Card</span>
-            </h2>
-            <p className="text-muted-foreground">
-              Get your Emergency Access Card in 4 simple steps and enjoy priority care
-            </p>
-          </motion.div>
-
-          <AnimatedFlowchart steps={howItWorks} columns={4} />
-        </div>
-      </section>
-
-      {/* Who It's For */}
-      <section className="py-20 bg-muted/30">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center max-w-2xl mx-auto mb-16"
-          >
-            <motion.span
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
+              animate={{ opacity: 1, scale: 1 }}
               className="inline-block text-sm font-semibold gradient-text uppercase tracking-wider px-4 py-1 rounded-full bg-[#65349E]/10"
             >
               Perfect For
             </motion.span>
-            <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mt-4 mb-6">
               Who Is This <span className="gradient-text">Card For</span>
             </h2>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {targetAudience.map((item, index) => (
-              <AnimatedCard
-                key={index}
-                icon={item.icon}
-                title={item.title}
-                description={item.description}
-                index={index}
-              />
-            ))}
+          <div className="relative overflow-hidden">
+            <motion.div
+              className="flex gap-6 cursor-grab active:cursor-grabbing"
+              drag="x"
+              dragConstraints={{ left: -((targetAudience.length - 1) * 320), right: 0 }}
+              dragElastic={0.2}
+              whileDrag={{ cursor: "grabbing" }}
+            >
+              {targetAudience.map((item, index) => (
+                <motion.div
+                  key={index}
+                  className="flex-shrink-0 w-80"
+                  initial={{ opacity: 0, x: 50 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                >
+                  <AnimatedCard
+                    icon={item.icon}
+                    title={item.title}
+                    description={item.description}
+                    index={index}
+                  />
+                </motion.div>
+              ))}
+            </motion.div>
           </div>
         </div>
       </section>
 
       {/* Request Card Form */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+      <section className="flex-1 bg-white overflow-y-auto min-h-0">
+        <div className="container mx-auto px-4 py-8">
+          <div className="grid lg:grid-cols-2 gap-8 items-start max-h-full">
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -403,10 +400,10 @@ export default function EmergencyCardPage() {
               >
                 Get Your Card
               </motion.span>
-              <h2 className="text-3xl md:text-4xl font-bold">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold">
                 Request Your <span className="gradient-text">Emergency Access Card</span>
               </h2>
-              <p className="text-muted-foreground text-lg">
+              <p className="text-muted-foreground text-base sm:text-lg">
                 Fill in your details and we'll get your Emergency Access Card delivered within 3 working days. Be
                 prepared for any emergency.
               </p>
@@ -435,9 +432,9 @@ export default function EmergencyCardPage() {
               </div>
             </motion.div>
 
-            <motion.div initial={{ opacity: 0, x: 50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
+            <motion.div initial={{ opacity: 0, x: 50 }} animate={{ opacity: 1, x: 0 }}>
               <Card className="bg-white border-border shadow-xl">
-                <CardContent className="p-8">
+                <CardContent className="p-4 sm:p-6 md:p-8">
                   <form onSubmit={handleSubmit} className="space-y-6">
                     <motion.div
                       initial={{ opacity: 0, y: 20 }}
@@ -592,7 +589,7 @@ export default function EmergencyCardPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 relative overflow-hidden">
+      <section className="flex-shrink-0 py-12 relative overflow-hidden">
         <div className="absolute inset-0 gradient-bg" />
 
         {/* Animated particles */}
@@ -637,12 +634,12 @@ export default function EmergencyCardPage() {
               <Button
                 size="lg"
                 variant="secondary"
-                className="gap-2 h-12 px-8 bg-white text-[#65349E] hover:bg-white/90"
+                className="gap-2 h-12 px-4 sm:px-8 bg-white text-[#65349E] hover:bg-white/90 whitespace-nowrap"
                 asChild
               >
                 <a href="tel:9900089602">
                   <Phone className="h-5 w-5" />
-                  Call Us - 99000 89602
+                  <span className="whitespace-nowrap">Call Us - 99000 89602</span>
                 </a>
               </Button>
             </motion.div>
@@ -650,8 +647,6 @@ export default function EmergencyCardPage() {
         </div>
       </section>
 
-      <Footer />
-      <EmergencyCTA />
     </main>
   )
 }

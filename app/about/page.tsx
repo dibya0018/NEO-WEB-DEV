@@ -80,11 +80,11 @@ const itemVariants = {
 
 export default function AboutPage() {
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-white overflow-x-hidden">
       <Header />
 
       {/* Hero Section */}
-      <section className="relative py-20 lg:py-28 overflow-hidden">
+      <section className="relative py-20 lg:py-28 overflow-hidden overflow-x-hidden">
         <div className="absolute inset-0 overflow-hidden">
           <motion.div
             initial={{ scale: 0 }}
@@ -186,7 +186,7 @@ export default function AboutPage() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.3 }}
-                className="absolute -bottom-6 -left-6 bg-white rounded-2xl p-6 shadow-xl"
+                className="absolute -bottom-6 left-4 sm:-left-6 bg-white rounded-2xl p-4 sm:p-6 shadow-xl max-w-[calc(100%-2rem)] sm:max-w-none"
               >
                 <div className="flex items-center gap-4">
                   {/* <div className="w-14 h-14 rounded-full gradient-bg flex items-center justify-center">
@@ -422,13 +422,13 @@ export default function AboutPage() {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="flex flex-wrap justify-center gap-8"
+            className="flex flex-wrap justify-center gap-8 overflow-x-hidden"
           >
             {stats.map((stat, index) => (
               <motion.div
                 key={index}
                 whileHover={{ scale: 1.05 }}
-                className="text-center p-8 rounded-2xl bg-muted/50 min-w-[200px]"
+                className="text-center p-8 rounded-2xl bg-muted/50 min-w-[200px] max-w-full"
               >
                 <p className="text-4xl md:text-5xl font-bold gradient-text">
                   {stat.value}
@@ -442,7 +442,7 @@ export default function AboutPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 relative overflow-hidden">
+      <section className="py-20 relative overflow-hidden overflow-x-hidden">
         <div className="absolute inset-0 gradient-bg" />
         <div className="container mx-auto px-4 relative">
           <motion.div

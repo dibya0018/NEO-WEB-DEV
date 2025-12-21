@@ -5,20 +5,27 @@ import { Calendar, Clock, Shield, Heart } from "lucide-react"
 
 export function Hero() {
   return (
- <section className="relative overflow-hidden bg-white h-screen flex items-center justify-center -mt-20 pt-20">
+ <section className="relative overflow-hidden bg-white min-h-screen flex items-center justify-center -mt-20 pt-20 pb-12 md:pb-20">
     <div className="absolute inset-0 z-0">
+    {/* Image for mobile */}
+    <img
+      src="/location.png"
+      alt="Neo TrueNorth Hospital"
+      className="w-full h-full object-cover md:hidden"
+    />
+    
+    {/* Video for desktop */}
     <video
       autoPlay
       loop
       muted
       playsInline
       preload="auto"
-      className="w-full h-full object-cover"
+      className="hidden md:block w-full h-full object-cover"
       ref={(el) => {
         if (el) el.playbackRate = 0.8;
       }}
     >
-
       <source src="/New_Hospistal.mp4" type="video/mp4" />
       Your browser does not support the video tag.
     </video>
@@ -26,20 +33,20 @@ export function Hero() {
         <div className="absolute inset-0 bg-gradient-to-b from-white/60 via-white/50 to-white/60 md:from-white/70 md:via-white/60 md:to-white/70" />
       </div>
 
-      <div className="container mx-auto px-4 relative z-10 py-20">
+      <div className="container mx-auto px-4 sm:px-6 relative z-10 py-8 md:py-20">
         <div className="max-w-4xl mx-auto text-center">
-          <div className="space-y-8">
+          <div className="space-y-4 md:space-y-6 lg:space-y-8">
             <motion.h1
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-4xl md:text-5xl lg:text-7xl font-bold leading-tight text-balance"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight text-balance px-2"
             >
               <motion.span
   initial={{ opacity: 0, y: -30 }}
   animate={{ opacity: 1, y: 0 }}
   transition={{ duration: 0.6, delay: 0.2 }}
-  className="bg-gradient-to-r from-[#65349E] via-[#F04A89] to-[#65349E] bg-clip-text text-transparent inline-block mt-24 md:mt-0"
+  className="bg-gradient-to-r from-[#65349E] via-[#F04A89] to-[#65349E] bg-clip-text text-transparent inline-block mt-12 sm:mt-16 md:mt-20 lg:mt-24 xl:mt-0"
 >
   When Every Second...
 </motion.span>
@@ -58,10 +65,11 @@ export function Hero() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.5 }}
-              className="text-lg text-foreground max-w-2xl mx-auto leading-relaxed"
+              className="text-base sm:text-lg md:text-xl text-foreground max-w-2xl mx-auto leading-relaxed px-4"
             >
               <span className="font-semibold">Care in 60 Seconds. Treatment in 60 Minutes.</span>
-              <br />
+              <br className="hidden sm:block" />
+              <span className="sm:hidden"> </span>
               Smart Emergency Care Hospitals designed for speed, precision, and life-saving outcomes.
             </motion.p>
 
@@ -69,7 +77,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.6 }}
-              className="flex justify-center pt-6"
+              className="flex justify-center pt-4 md:pt-6 px-4"
             >
               <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
@@ -80,7 +88,7 @@ export function Hero() {
                   scale: 0.92,
                   transition: { type: "spring", stiffness: 400, damping: 10 },
                 }}
-                className="relative"
+                className="relative w-full sm:w-auto"
               >
                {/* Remove or modify this glowing div */}
                {/* <motion.div
@@ -97,7 +105,7 @@ export function Hero() {
                 /> */}
                      <Button
                      size="lg"
-                     className="relative gap-3 h-16 px-12 bg-gradient-to-r from-[#65349E]/90 via-[#F04A89]/90 to-[#65349E]/90 text-white hover:opacity-90 text-xl font-bold shadow-lg hover:shadow-[0_20px_50px_rgba(240,74,137,0.4)] transition-all duration-300 rounded-full"
+                     className="relative gap-2 sm:gap-3 h-12 sm:h-14 md:h-16 px-6 sm:px-8 md:px-12 bg-gradient-to-r from-[#65349E]/90 via-[#F04A89]/90 to-[#65349E]/90 text-white hover:opacity-90 text-base sm:text-lg md:text-xl font-bold shadow-lg hover:shadow-[0_20px_50px_rgba(240,74,137,0.4)] transition-all duration-300 rounded-full w-full sm:w-auto"
                      asChild
                     >
                      <a
@@ -105,8 +113,8 @@ export function Hero() {
                      target="_blank"
                      rel="noopener noreferrer"
                      >
-                     <Calendar className="h-7 w-7" />
-                     Book Appointment
+                     <Calendar className="h-5 w-5 sm:h-6 sm:w-6 md:h-7 md:w-7" />
+                     <span className="whitespace-nowrap">Book Appointment</span>
                      </a>
                      </Button>                       
               </motion.div>
@@ -116,7 +124,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.8 }}
-              className="flex flex-wrap items-center justify-center gap-6 pt-4"
+              className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 md:gap-6 pt-2 md:pt-4 px-4"
             >
               {[
                 { icon: Clock, text: "60 Sec Response", color: "#F04A89" },
@@ -128,10 +136,10 @@ export function Hero() {
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.9 + i * 0.1 }}
-                  className="flex items-center gap-2 bg-white backdrop-blur-sm px-4 py-2 rounded-full border border-border"
+                  className="flex items-center gap-2 bg-white backdrop-blur-sm px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-border"
                 >
-                  <item.icon className="h-5 w-5" style={{ color: item.color }} />
-                  <span className="text-sm font-medium text-foreground">{item.text}</span>
+                  <item.icon className="h-4 w-4 sm:h-5 sm:w-5" style={{ color: item.color }} />
+                  <span className="text-xs sm:text-sm font-medium text-foreground whitespace-nowrap">{item.text}</span>
                 </motion.div>
               ))}
             </motion.div>

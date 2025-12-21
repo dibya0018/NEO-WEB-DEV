@@ -79,24 +79,24 @@ export function EmergencyServices() {
   const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"])
 
   return (
-    <section id="services" className="py-20 bg-muted/30 relative overflow-hidden" ref={sectionRef}>
+    <section id="services" className="py-12 sm:py-16 md:py-20 bg-muted/30 relative overflow-hidden" ref={sectionRef}>
       <motion.div className="absolute inset-0 opacity-30" style={{ y: backgroundY }}>
-        <div className="absolute top-20 left-10 w-64 h-64 rounded-full bg-[#65349E]/20 blur-3xl" />
-        <div className="absolute bottom-20 right-10 w-96 h-96 rounded-full bg-[#F04A89]/20 blur-3xl" />
+        <div className="absolute top-20 left-10 w-64 h-64 rounded-full bg-[#65349E]/20 blur-3xl hidden md:block" />
+        <div className="absolute bottom-20 right-10 w-96 h-96 rounded-full bg-[#F04A89]/20 blur-3xl hidden md:block" />
       </motion.div>
 
-      <div className="container mx-auto px-4 relative">
+      <div className="container mx-auto px-4 sm:px-6 relative">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center max-w-2xl mx-auto mb-16"
+          className="text-center max-w-2xl mx-auto mb-8 sm:mb-12 md:mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 text-balance">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mt-4 mb-4 sm:mb-6 text-balance px-2">
             <span className="gradient-text">Our services - Is it an emergency?</span>
           </h2>
-          <p className="text-muted-foreground text-lg">
+          <p className="text-muted-foreground text-base sm:text-lg px-4">
             From cardiac emergencies to trauma care, our specialized teams are ready 24x7 to provide life-saving
             treatment.
           </p>
@@ -107,28 +107,28 @@ export function EmergencyServices() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"
         >
           {services.map((service, index) => (
             <motion.div key={index} variants={itemVariants}>
               <HoverCard3D>
                 <Card className="group hover:shadow-xl transition-all duration-300 border-border/50 bg-white h-full">
-                  <CardContent className="p-6">
+                  <CardContent className="p-4 sm:p-6">
                     <motion.div
                       whileHover={{ scale: 1.1, rotate: 5 }}
                       whileTap={{ scale: 0.9 }}
                       transition={{ type: "spring", stiffness: 300 }}
-                      className="w-14 h-14 rounded-xl flex items-center justify-center mb-4"
+                      className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl flex items-center justify-center mb-3 sm:mb-4"
                       style={{
                         background: `linear-gradient(135deg, ${service.color}, ${service.color}dd)`,
                       }}
                     >
-                      <service.icon className="h-7 w-7 text-white" />
+                      <service.icon className="h-6 w-6 sm:h-7 sm:w-7 text-white" />
                     </motion.div>
-                    <h3 className="text-xl font-semibold mb-2 group-hover:text-[#65349E] transition-colors">
+                    <h3 className="text-lg sm:text-xl font-semibold mb-2 group-hover:text-[#65349E] transition-colors">
                       {service.title}
                     </h3>
-                    <p className="text-muted-foreground leading-relaxed">{service.description}</p>
+                    <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">{service.description}</p>
                   </CardContent>
                 </Card>
               </HoverCard3D>

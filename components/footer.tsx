@@ -4,9 +4,9 @@ import Image from "next/image"
 
 export function Footer() {
   return (
-    <footer className="bg-foreground text-background py-16">
-      <div className="container mx-auto px-4">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
+    <footer className="bg-foreground text-background py-12 sm:py-16">
+      <div className="container mx-auto px-4 sm:px-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 md:gap-12">
           <div className="space-y-4">
             <Link href="/" className="flex items-center gap-2">
               <Image
@@ -22,7 +22,7 @@ export function Footer() {
             </p>
             <div className="flex items-center gap-3 text-background/70">
               <Phone className="h-5 w-5" />
-              <span className="font-semibold text-background">99000 89601</span>
+              <span className="font-semibold text-background whitespace-nowrap">99000 89601</span>
             </div>
             <div className="flex gap-4 pt-2">
               <a href="#" className="text-background/60 hover:text-background transition-colors">
@@ -39,25 +39,25 @@ export function Footer() {
               </a>
             </div>
            
-            <div className="flex flex-row gap-8 mt-4">
+            <div className="flex flex-row gap-4 sm:gap-6 md:gap-8 mt-4">
              {/* Google Play */}
              <div className="flex flex-col items-center">
             <img
              src="/scan_1.png"
              alt="Google Play QR Code"
-             className="w-24 h-24 object-contain mb-1"  // Changed from mb-2 to mb-1
+             className="w-20 h-20 sm:w-24 sm:h-24 object-contain mb-1"
              />
              <a 
               href="https://play.google.com/store/apps/details?id=com.better.neotruenorth&hl=en_US" 
               target="_blank"
               rel="noopener noreferrer"
-              className="block w-32 -mt-1"  // Also added -mt-1 to pull the badge up slightly
+              className="block w-28 sm:w-32 -mt-1"
             >
              <img
              src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
                alt="Get it on Google Play"
-             className="w-29 h-auto"
-              style={{ maxHeight: '55px' }}
+             className="w-full h-auto"
+              style={{ maxHeight: '45px' }}
                />
             </a>
            </div>
@@ -67,19 +67,19 @@ export function Footer() {
              <img
                src="/scan_2.png"
                alt="App Store QR Code"
-                className="w-24 h-24 object-contain mb-2"
+                className="w-20 h-20 sm:w-24 sm:h-24 object-contain mb-2"
                  />
                  <a 
                     href="https://apps.apple.com/in/app/neo-tru-north-hospitals/id6756440509" 
                    target="_blank"
                     rel="noopener noreferrer"
-                    className="block w-32"
+                    className="block w-28 sm:w-32"
                       >
                     <img
                      src="https://developer.apple.com/app-store/marketing/guidelines/images/badge-download-on-the-app-store.svg"
                      alt="Download on the App Store"
-                     className="w-36 h-auto"  // Reduced width to match visual weight
-                     style={{ maxHeight: '30px' }}  // Added to match height
+                     className="w-full h-auto"
+                     style={{ maxHeight: '28px' }}
                   />
                  </a>
                 </div>
@@ -141,7 +141,7 @@ export function Footer() {
                 <Phone className="h-5 w-5 mt-0.5" />
                 <div>
                   <p className="font-semibold text-background">Emergency Helpline</p>
-                  <p>99000 89601</p>
+                  <p className="whitespace-nowrap">99000 89601</p>
                 </div>
               </li>
               <li className="flex items-start gap-3">
