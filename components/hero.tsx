@@ -19,7 +19,7 @@ export function Hero() {
       }}
     >
 
-      <source src="/New_Hospistal.MP4" type="video/mp4" />
+      <source src="/New_Hospistal.mp4" type="video/mp4" />
       Your browser does not support the video tag.
     </video>
         {/* Lighter overlay for better image visibility on mobile */}
