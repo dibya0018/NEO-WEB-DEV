@@ -151,7 +151,7 @@ export function Footer() {
                 </div>
               </li>
               <li className="flex items-start gap-3">
-                <MapPin className="h-7 w-7 mt-0.5 flex-shrink-0" />
+                <MapPin className="h-5 w-5 mt-0.5 flex-shrink-0" />
                 <div>
                   <p>
                     Sy. No. 110/4, Rebus Realm 1, Neeladri Rd, Doddathoguru, Electronic City, Bengaluru, Karnataka

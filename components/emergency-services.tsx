@@ -115,7 +115,7 @@ export function EmergencyServices() {
                 <Card className="group hover:shadow-xl transition-all duration-300 border-border/50 bg-white h-full">
                   <CardContent className="p-6">
                     <motion.div
-                      whileHover={{ scale: 1.1, rotate: [0, -5, 5, 0] }}
+                      whileHover={{ scale: 1.1, rotate: 5 }}
                       whileTap={{ scale: 0.9 }}
                       transition={{ type: "spring", stiffness: 300 }}
                       className="w-14 h-14 rounded-xl flex items-center justify-center mb-4"

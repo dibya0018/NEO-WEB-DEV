@@ -256,8 +256,10 @@ function WhyChooseUs() {
     </p>
   </div>
  <Link 
-  href={reason.title === "General Physician 24×7" ? "/Appointment" : "tel:9900089601"}
+  href={reason.title === "General Physician 24×7" ? "https://appointment.bipminds.com/" : "tel:9900089601"}
   className="mt-auto w-full"
+  target={reason.title === "General Physician 24×7" ? "_blank" : undefined}
+  rel={reason.title === "General Physician 24×7" ? "noopener noreferrer" : undefined}
 >
   {reason.title === "General Physician 24×7" ? (
     <Button variant="outline" className="w-full">
@@ -297,7 +299,9 @@ export default function ServicesPage() {
         {/* Book Appointment Button */}
         <div className="py-12 text-center">
           <Link
-            href="/Appointment"
+            href="https://appointment.bipminds.com/"
+            target="_blank"
+            rel="noopener noreferrer"
             className="relative inline-flex items-center justify-center gap-3 h-16 px-12 bg-gradient-to-r from-[#65349E] via-[#F04A89] to-[#65349E] text-white text-xl font-bold rounded-full
               shadow-lg hover:shadow-[0_20px_50px_rgba(240,74,137,0.4)] 
               transform hover:-translate-y-1 transition-all duration-300

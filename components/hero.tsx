@@ -101,7 +101,7 @@ export function Hero() {
                      asChild
                     >
                      <a
-                     href="/Appointment"
+                     href="https://appointment.bipminds.com/"
                      target="_blank"
                      rel="noopener noreferrer"
                      >

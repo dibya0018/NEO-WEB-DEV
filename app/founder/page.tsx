@@ -83,20 +83,6 @@ export default function FounderPage() {
                       <p className="text-sm text-muted-foreground">Neo TrueNorth Healthcare</p>
                     </div>
 
-                    <div className="border-t border-border pt-6 space-y-4">
-                      <div className="text-sm">
-                        <p className="font-semibold mb-1">Education</p>
-                        <p className="text-muted-foreground">MBBS, MD Emergency Medicine</p>
-                        <p className="text-muted-foreground">Rajiv Gandhi University of Health Sciences - Bangalore - Healthcare Management</p>
-                      </div>
-
-                      <div className="text-sm">
-                        <p className="font-semibold mb-1">Experience</p>
-                        <p className="text-muted-foreground">15+ years in Emergency Medicine</p>
-                        {/* <p className="text-muted-foreground">Former Head of ER, Apollo Hospitals</p> */}
-                      </div>
-                    </div>
-
                     <div className="flex justify-center gap-4 pt-6 border-t border-border mt-6">
                       <a href="https://www.linkedin.com/in/rameshkarmegam?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" className="text-muted-foreground hover:text-[#65349E] transition-colors">
                         <Linkedin className="h-5 w-5" />
