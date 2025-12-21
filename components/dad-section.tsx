@@ -47,29 +47,14 @@ export function DADSection() {
                 className="w-full h-auto object-cover rounded-2xl"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.4 }}
-                className="absolute bottom-6 left-6 right-6"
-              >
-                <div className="bg-white/95 backdrop-blur rounded-xl p-4">
-                  <div className="flex items-center gap-4">
-                    <motion.div
-                      animate={{ rotate: [0, -10, 10, -10, 0] }}
-                      transition={{ repeat: Number.POSITIVE_INFINITY, duration: 1.5, repeatDelay: 2 }}
-                      className="w-14 h-14 rounded-full gradient-bg flex items-center justify-center"
-                    >
-                      <Phone className="h-7 w-7 text-white" />
-                    </motion.div>
-                    <div>
-                      <p className="text-sm text-muted-foreground">Call D.A.D Now</p>
-                      <p className="text-2xl font-bold">99000 89601</p>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
+              <div className="absolute bottom-6 left-6 right-6">
+                <Button className="w-full gradient-bg text-white hover:opacity-90 gap-2 h-12" asChild>
+                  <a href="tel:9900089602">
+                    <Phone className="h-5 w-5" />
+                    Call D.A.D Now
+                  </a>
+                </Button>
+              </div>
             </div>
           </motion.div>
 
@@ -117,12 +102,6 @@ export function DADSection() {
             </div>
 
             <div className="flex flex-wrap gap-4">
-              <Button size="lg" className="gradient-bg text-white hover:opacity-90 gap-2 h-12" asChild>
-                <a href="tel:9900089601">
-                  <Phone className="h-5 w-5" />
-                  Call D.A.D Now
-                </a>
-              </Button>
               <Button size="lg" variant="outline" className="gap-2 h-12 bg-transparent" asChild>
                 <Link href="/dad">
                   Learn More

@@ -5,17 +5,21 @@ import { Calendar, Clock, Shield, Heart } from "lucide-react"
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden bg-white h-screen flex items-center justify-center">
-  <div className="absolute inset-0 z-0">
+ <section className="relative overflow-hidden bg-white h-screen flex items-center justify-center -mt-20 pt-20">
+    <div className="absolute inset-0 z-0">
     <video
       autoPlay
       loop
       muted
       playsInline
       preload="auto"
-      className="absolute inset-0 w-full h-full object-cover"
+      className="w-full h-full object-cover"
+      ref={(el) => {
+        if (el) el.playbackRate = 0.8;
+      }}
     >
-      <source src="/hospital_video.mp4" type="video/mp4" />
+
+      <source src="/New_Hospistal.MP4" type="video/mp4" />
       Your browser does not support the video tag.
     </video>
         {/* Lighter overlay for better image visibility on mobile */}
@@ -32,13 +36,13 @@ export function Hero() {
               className="text-4xl md:text-5xl lg:text-7xl font-bold leading-tight text-balance"
             >
               <motion.span
-                initial={{ opacity: 0, y: -30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="bg-gradient-to-r from-[#65349E] via-[#F04A89] to-[#65349E] bg-clip-text text-transparent inline-block"
-              >
-                When Every Second...
-              </motion.span>
+  initial={{ opacity: 0, y: -30 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.6, delay: 0.2 }}
+  className="bg-gradient-to-r from-[#65349E] via-[#F04A89] to-[#65349E] bg-clip-text text-transparent inline-block mt-24 md:mt-0"
+>
+  When Every Second...
+</motion.span>
               <br />
               <motion.span
                 initial={{ opacity: 0, y: -30 }}
@@ -56,7 +60,7 @@ export function Hero() {
               transition={{ duration: 0.6, delay: 0.5 }}
               className="text-lg text-foreground max-w-2xl mx-auto leading-relaxed"
             >
-              <span className="font-semibold">Doctor in 60 Seconds. Treatment in 60 Minutes.</span>
+              <span className="font-semibold">Care in 60 Seconds. Treatment in 60 Minutes.</span>
               <br />
               Smart Emergency Care Hospitals designed for speed, precision, and life-saving outcomes.
             </motion.p>
@@ -78,32 +82,33 @@ export function Hero() {
                 }}
                 className="relative"
               >
-                <motion.div
-                  className="absolute inset-0 rounded-lg gradient-bg opacity-50 blur-xl"
-                  animate={{
-                    scale: [1, 1.3, 1],
-                    opacity: [0.5, 0.8, 0.5],
-                  }}
-                  transition={{
-                    duration: 2,
-                    repeat: Number.POSITIVE_INFINITY,
-                    ease: "easeInOut",
-                  }}
-                />
-                <Button
-                  size="lg"
-                  className="relative gap-3 h-16 px-12 gradient-bg text-white hover:opacity-90 text-xl font-bold shadow-2xl hover:shadow-[0_20px_50px_rgba(240,74,137,0.7)] transition-all ring-4 ring-white/30 active:ring-8 active:ring-[#F04A89]/30"
-                  asChild
-                >
-                  <a
-                    href="https://app.fyndbetter.com/neotrue_apt?apttype=inclinic&location="
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <Calendar className="h-7 w-7" />
-                    Book Appointment
-                  </a>
-                </Button>
+               {/* Remove or modify this glowing div */}
+               {/* <motion.div
+                className="absolute inset-0 rounded-lg gradient-bg opacity-50 blur-xl"
+                animate={{
+                scale: [1, 1.3, 1],
+                opacity: [0.5, 0.8, 0.5],
+                }}
+                transition={{
+                duration: 2,
+                repeat: Number.POSITIVE_INFINITY,
+                ease: "easeInOut",
+                }}
+                /> */}
+                     <Button
+                     size="lg"
+                     className="relative gap-3 h-16 px-12 bg-gradient-to-r from-[#65349E]/90 via-[#F04A89]/90 to-[#65349E]/90 text-white hover:opacity-90 text-xl font-bold shadow-lg hover:shadow-[0_20px_50px_rgba(240,74,137,0.4)] transition-all duration-300 rounded-full"
+                     asChild
+                    >
+                     <a
+                     href="/Appointment"
+                     target="_blank"
+                     rel="noopener noreferrer"
+                     >
+                     <Calendar className="h-7 w-7" />
+                     Book Appointment
+                     </a>
+                     </Button>                       
               </motion.div>
             </motion.div>
 

@@ -8,7 +8,6 @@ import { EmergencyCard } from "@/components/emergency-card"
 import { Testimonials } from "@/components/testimonials"
 import { CTASection } from "@/components/cta-section"
 import { Footer } from "@/components/footer"
-import { EmergencyCTA } from "@/components/emergency-cta"
 
 export default function Home() {
   return (
@@ -16,14 +15,13 @@ export default function Home() {
       <Header />
       <Hero />
       <EmergencyServices />
-      <DADSection />
-      <WhyChooseUs />
-      <HowItWorks />
+       <HowItWorks />
+       <WhyChooseUs />
       <EmergencyCard />
+      <DADSection />
       <Testimonials />
       <CTASection />
       <Footer />
-      <EmergencyCTA />
     </main>
   )
 }

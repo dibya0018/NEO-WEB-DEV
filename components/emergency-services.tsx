@@ -2,45 +2,56 @@
 
 import { motion, useScroll, useTransform } from "framer-motion"
 import { Card, CardContent } from "@/components/ui/card"
-import { Heart, Brain, Wind, Activity, Skull, AlertTriangle } from "lucide-react"
+import { HeartPulse,
+  Stethoscope,
+  Droplets,
+  Flame,
+  Brain,
+  PawPrint } from "lucide-react"
 import { HoverCard3D } from "./hover-card-3d"
 import { useRef } from "react"
 
 const services = [
   {
-    icon: Heart,
-    title: "Cardiac Emergency",
-    description: "Rapid response for heart attacks, chest pain, and cardiac arrests with dedicated cardiac ICU.",
+    icon: HeartPulse,
+    title: "Chest pain",
+    description:
+      "A physical discomfort or pressure felt anywhere from the neck to the upper abdomen that requires immediate medical evaluation to rule out serious underlying conditions.",
     color: "#F04A89",
   },
   {
-    icon: Brain,
-    title: "Stroke Care",
-    description: "Time-critical stroke treatment with advanced imaging and neurological expertise.",
+    icon: Stethoscope,
+    title: "Abdominal pain",
+    description:
+      "Any discomfort or distress felt between the chest and the groin, often ranging from mild indigestion to a sign of a serious underlying medical condition.",
     color: "#65349E",
   },
   {
-    icon: Skull,
-    title: "Trauma Care",
-    description: "Comprehensive trauma services for accidents, injuries, and multi-system emergencies.",
+    icon: Droplets,
+    title: "Bleeding",
+    description:
+      "Also known as hemorrhage, the loss of blood from the circulatory system through damaged blood vessels, either internally or externally through the skin.",
     color: "#F8B739",
   },
   {
-    icon: Wind,
-    title: "Respiratory Emergency",
-    description: "Immediate care for breathing difficulties, asthma attacks, and respiratory failures.",
+    icon: Flame,
+    title: "Burns",
+    description:
+      "A type of injury to the skin caused by heat, radiation, electricity, friction, or chemical contact.",
     color: "#65349E",
   },
   {
-    icon: Activity,
-    title: "Sepsis Treatment",
-    description: "Rapid identification and treatment of life-threatening infections and sepsis.",
+    icon: Brain,
+    title: "Headache",
+    description:
+      "A sensation of pain or discomfort in the head or upper neck region, often caused by tension, migraines, or underlying medical issues.",
     color: "#F04A89",
   },
   {
-    icon: AlertTriangle,
-    title: "Poisoning & Toxicology",
-    description: "Expert management of poisoning, drug overdose, and toxic exposures.",
+    icon: PawPrint,
+    title: "Dog bite",
+    description:
+      "A wound or puncture caused by a dog's teeth that requires immediate cleaning and medical evaluation to prevent infection or complications.",
     color: "#F8B739",
   },
 ]
@@ -82,9 +93,8 @@ export function EmergencyServices() {
           transition={{ duration: 0.6 }}
           className="text-center max-w-2xl mx-auto mb-16"
         >
-          <span className="text-sm font-semibold gradient-text uppercase tracking-wider">Our Services</span>
           <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 text-balance">
-            Emergency Services We <span className="gradient-text">Specialize In</span>
+            <span className="gradient-text">Our services - Is it an emergency?</span>
           </h2>
           <p className="text-muted-foreground text-lg">
             From cardiac emergencies to trauma care, our specialized teams are ready 24x7 to provide life-saving

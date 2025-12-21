@@ -31,7 +31,7 @@ export function EmergencyCTA() {
 
   return (
     <>
-      <motion.div
+      {/* <motion.div
         initial={{ scale: 0, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ delay: 1, type: "spring", stiffness: 200 }}
@@ -47,7 +47,7 @@ export function EmergencyCTA() {
             {isOpen ? <X className="h-6 w-6" /> : <MessageCircle className="h-6 w-6" />}
           </motion.div>
         </motion.button>
-      </motion.div>
+      </motion.div> */}
 
       <AnimatePresence>
         {isOpen && (

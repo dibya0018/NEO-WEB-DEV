@@ -39,59 +39,65 @@ const itemVariants = {
 export default function LocationsPage() {
   return (
     <main className="min-h-screen bg-white">
-      <Header />
-
-      <section className="relative py-20 lg:py-28 overflow-hidden">
-        <div className="absolute inset-0">
-          <img src="/neo-look.avif" alt="Neo TrueNorth Hospital" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-b from-white/95 via-white/85 to-white/95" />
+  <section className="relative h-screen">
+    {/* Background Image - Only for this section */}
+    <div className="absolute inset-0">
+      <img 
+        src="/location.png" 
+        alt="Neo TrueNorth Hospital" 
+        className="w-full h-full object-cover" 
+      />
+      {/* Reduced opacity of the white overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-white/50 via-white/30 to-white/50" />
+    </div>
+    
+    {/* Header */}
+    <Header/>
+    
+    {/* Content */}
+    <div className="container mx-auto px-4 h-full flex items-center justify-center relative z-10">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        className="max-w-4xl mx-auto text-center relative z-20"  
+      >
+        {/* Your text content here */}
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary text-secondary-foreground text-sm font-medium mb-6">
+          <MapPin className="h-4 w-4" />
+          Our Location
         </div>
-
-        <div className="container mx-auto px-4 relative">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="max-w-4xl mx-auto text-center"
-          >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary text-secondary-foreground text-sm font-medium mb-6">
-              <MapPin className="h-4 w-4" />
-              Our Location
-            </div>
-
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
-              <span className="text-foreground">Find Emergency Care</span>
-              <br />
-              <span className="gradient-text">In Electronic City</span>
-            </h1>
-
-            <p className="text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-              Neo TrueNorth Hospital is strategically located in Electronic City, Bengaluru to ensure emergency care is
-              always within reach.
-            </p>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-              className="flex flex-wrap justify-center gap-6 mt-8"
-            >
-              <div className="flex items-center gap-2">
-                <CheckCircle className="h-5 w-5 text-green-500" />
-                <span className="text-sm">Electronic City, Bengaluru</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle className="h-5 w-5 text-green-500" />
-                <span className="text-sm">24x7 Emergency Care</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle className="h-5 w-5 text-green-500" />
-                <span className="text-sm">Fully Equipped ICU</span>
-              </div>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+          <span className="text-foreground">Find Emergency Care</span>
+          <br />
+          <span className="gradient-text">In Electronic City</span>
+        </h1>
+        <p className="text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+          Neo TrueNorth Hospital is strategically located in Electronic City, Bengaluru to ensure emergency care is
+          always within reach.
+        </p>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3 }}
+          className="flex flex-wrap justify-center gap-6 mt-8"
+        >
+          <div className="flex items-center gap-2">
+            <CheckCircle className="h-5 w-5 text-green-500" />
+            <span className="text-sm">Electronic City, Bengaluru</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <CheckCircle className="h-5 w-5 text-green-500" />
+            <span className="text-sm">24x7 Emergency Care</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <CheckCircle className="h-5 w-5 text-green-500" />
+            <span className="text-sm">Fully Equipped ICU</span>
+          </div>
+        </motion.div>
+      </motion.div>
+    </div>
+  </section>
 
       {/* Location Detail */}
       <section className="py-20 bg-muted/30">

@@ -70,7 +70,7 @@ export default function FounderPage() {
                     <div className="relative mb-6">
                       <div className="w-32 h-32 mx-auto rounded-full gradient-bg p-1">
                         <img
-                          src="/professional-indian-male-doctor-portrait.jpg"
+                          src="/owner.png"
                           alt="Dr. Founder"
                           className="w-full h-full rounded-full object-cover bg-white"
                         />
@@ -78,7 +78,7 @@ export default function FounderPage() {
                     </div>
 
                     <div className="text-center space-y-2 mb-6">
-                      <h3 className="text-2xl font-bold">Dr. Rajiv Menon</h3>
+                      <h3 className="text-2xl font-bold">Dr. Ramesh Karmegam</h3>
                       <p className="text-muted-foreground">Founder & CEO</p>
                       <p className="text-sm text-muted-foreground">Neo TrueNorth Healthcare</p>
                     </div>
@@ -87,18 +87,18 @@ export default function FounderPage() {
                       <div className="text-sm">
                         <p className="font-semibold mb-1">Education</p>
                         <p className="text-muted-foreground">MBBS, MD Emergency Medicine</p>
-                        <p className="text-muted-foreground">IIM Bangalore - Healthcare Management</p>
+                        <p className="text-muted-foreground">Rajiv Gandhi University of Health Sciences - Bangalore - Healthcare Management</p>
                       </div>
 
                       <div className="text-sm">
                         <p className="font-semibold mb-1">Experience</p>
                         <p className="text-muted-foreground">15+ years in Emergency Medicine</p>
-                        <p className="text-muted-foreground">Former Head of ER, Apollo Hospitals</p>
+                        {/* <p className="text-muted-foreground">Former Head of ER, Apollo Hospitals</p> */}
                       </div>
                     </div>
 
                     <div className="flex justify-center gap-4 pt-6 border-t border-border mt-6">
-                      <a href="#" className="text-muted-foreground hover:text-[#65349E] transition-colors">
+                      <a href="https://www.linkedin.com/in/rameshkarmegam?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" className="text-muted-foreground hover:text-[#65349E] transition-colors">
                         <Linkedin className="h-5 w-5" />
                       </a>
                       <a href="#" className="text-muted-foreground hover:text-[#65349E] transition-colors">
@@ -134,96 +134,67 @@ export default function FounderPage() {
                   <Quote className="h-8 w-8 text-white" />
                 </div>
 
-                <div className="space-y-6 text-muted-foreground leading-relaxed">
-                  <p className="text-xl text-foreground font-medium">Dear Friends,</p>
+               <div className="space-y-6 text-muted-foreground leading-relaxed">
+              <p>
+               I began my career like most doctors with long duty hours, a stethoscope, and a desire to serve.
+               But early on, I saw a painful truth:
+               <span className="font-semibold text-foreground">
+               {" "}emergencies don’t fail because of doctors, they fail because of broken systems.
+               </span>
+               </p>
 
-                  <p>
-                    In my 15 years as an emergency medicine physician, I've witnessed both the incredible potential of
-                    timely care and the devastating consequences of delays. I've seen families torn apart not because
-                    medicine failed, but because{" "}
-                    <span className="font-semibold text-foreground">the system wasn't designed for speed</span>.
-                  </p>
+              <p>
+               No triage. No standardisation. No helpline. No coordination.
+               <br />
+               <span className="font-semibold text-foreground">Lives were being lost in the gaps.</span>
+               </p>
 
-                  <p>
-                    Every day in India, lives are lost not due to lack of treatment options, but because of the critical
-                    minutes wasted in confusion, transportation, and hospital readiness. A heart attack victim loses
-                    precious cardiac muscle with every passing minute. A stroke patient's brain cells die by the
-                    millions. These aren't just statistics - they're mothers, fathers, children, and friends.
-                  </p>
+              <p>
+               This reality led me to found <span className="font-semibold text-foreground">WhiteCross Clinic</span>,
+               where we pioneered Smart Emergency Care Clinics. But even the best clinic could only solve part of
+               the problem India lacked a true Emergency Care ecosystem.
+               </p>
 
-                  <p>
-                    This reality haunted me. It kept me awake at night and eventually led me to ask a fundamental
-                    question:{" "}
-                    <span className="font-semibold text-foreground">
-                      What if we built a healthcare system from scratch, designed specifically for emergencies?
-                    </span>
-                  </p>
+              <p>
+               Becoming a father changed everything. Every emergency became personal. I realised that families
+               needed more than treatment
+               <span className="font-semibold text-foreground"> they needed speed, clarity, and hope.</span>
+               </p>
 
-                  <p>
-                    Neo TrueNorth is my answer to that question. We're not trying to be another multi-specialty
-                    hospital. We're building India's first dedicated emergency care network - hospitals that breathe
-                    emergency medicine, doctors who think in seconds, and protocols that prioritize speed above all
-                    else.
-                  </p>
+              <p>
+               This purpose shaped <span className="font-semibold text-foreground">NeoTru Hospitals</span> a chain
+               of Smart Emergency Care Hospitals designed to be fast, accurate, outcome-driven, ethical, and
+               friendly.
+               </p>
 
-                  <p>
-                    D.A.D - Dial A Doctor - is the cornerstone of this vision. When you call D.A.D, you don't get a call
-                    center agent reading from a script. You get an emergency doctor - within 60 seconds - who
-                    immediately begins your care journey. This doctor guides you through first aid, coordinates with the
-                    nearest hospital, and ensures the ER team is ready before you arrive.
-                  </p>
+              <p className="font-semibold text-foreground">
+               Our mission: 100 Smart Emergency Care Hospitals by 2035.
+               </p>
 
-                  <p>
-                    Our approach is built on three pillars:{" "}
-                    <span className="font-semibold text-foreground">Speed, Protocol, and Compassion</span>.
-                  </p>
+              <p>
+               We created <span className="font-semibold text-foreground">D.A.D (Dial A Doctor)</span>a 24x7 triage
+               helpline connecting patients to a doctor within 60 seconds and initiating treatment within
+               60 minutes.
+               </p>
 
-                  <ul className="space-y-3 list-none pl-0">
-                    <li className="flex items-start gap-3">
-                      <Clock className="h-5 w-5 text-[#65349E] mt-1 shrink-0" />
-                      <span>
-                        <span className="font-semibold text-foreground">Speed</span> - Because in emergencies, time is
-                        tissue. Every system, every process, every decision is optimized for speed.
-                      </span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <Shield className="h-5 w-5 text-[#F04A89] mt-1 shrink-0" />
-                      <span>
-                        <span className="font-semibold text-foreground">Protocol</span> - Because consistency saves
-                        lives. Our evidence-based protocols ensure every patient receives the same high standard of
-                        care.
-                      </span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <Heart className="h-5 w-5 text-[#65349E] mt-1 shrink-0" />
-                      <span>
-                        <span className="font-semibold text-foreground">Compassion</span> - Because behind every
-                        emergency is a human being and a family in fear. We never lose sight of that.
-                      </span>
-                    </li>
-                  </ul>
+              <p>
+               NeoTru is more than an organisation it is a promise to every family that deserves a fighting
+               chance.
+              </p>
 
-                  <p>
-                    We're starting in Bengaluru, but our vision extends across India. Every city deserves access to
-                    world-class emergency care. Every family deserves the peace of mind that comes from knowing help is
-                    just a call away.
-                  </p>
+              <p className="text-foreground font-semibold">
+               As a Doctor, I Serve.
+               <br />
+               As a Father, I Empathize.
+               <br />
+               As an Entrepreneur, I Build Teams that Care.
+              </p>
 
-                  <p>
-                    I invite you to join us on this journey. Whether you're a patient seeking care, a family looking for
-                    protection, or a partner who shares our vision - Neo TrueNorth is here for you.
-                  </p>
+              <p>
+               Let’s build India’s Smart Community-Based Emergency Care Ecosystem together.
+              </p>
+            </div>
 
-                  <p>Together, let's build a future where no emergency goes unanswered.</p>
-
-                  <p className="text-foreground font-semibold">
-                    With commitment and hope,
-                    <br />
-                    <span className="gradient-text text-xl">Dr. Rajiv Menon</span>
-                    <br />
-                    <span className="text-sm font-normal text-muted-foreground">Founder & CEO, Neo TrueNorth</span>
-                  </p>
-                </div>
               </div>
             </motion.div>
           </div>

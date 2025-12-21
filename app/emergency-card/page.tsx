@@ -91,10 +91,89 @@ export default function EmergencyCardPage() {
     email: "",
     type: "family",
   })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle")
+  const [submitMessage, setSubmitMessage] = useState("")
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    alert("Thank you! We will contact you shortly to process your Emergency Access Card.")
+    setIsSubmitting(true)
+    setSubmitStatus("idle")
+    setSubmitMessage("")
+
+    try {
+      // Get UTM parameters from URL if present
+      const urlParams = new URLSearchParams(window.location.search)
+      const utmParams = {
+        utmCampaign: urlParams.get("utm_campaign") || "",
+        utmContent: urlParams.get("utm_content") || "",
+        utmMedium: urlParams.get("utm_medium") || "",
+        utmSource: urlParams.get("utm_source") || "",
+        gclid: urlParams.get("gclid") || "",
+      }
+
+      // Clean phone number (remove spaces, dashes, etc.)
+      const cleanPhone = formData.phone.replace(/\s+/g, "").replace(/-/g, "")
+
+      // Prepare form data for Next.js API route
+      const formDataToSend = new FormData()
+      formDataToSend.append("orgId", "1750175112727x192042413945782270")
+      formDataToSend.append("name", formData.name.trim())
+      formDataToSend.append("phone", cleanPhone)
+      formDataToSend.append("email", formData.email.trim() || "")
+      formDataToSend.append("description", `Emergency Access Card Request - Type: ${formData.type}`)
+      formDataToSend.append("sourceURL", window.location.href)
+      
+      // Add UTM parameters if present
+      if (utmParams.utmCampaign) formDataToSend.append("utmCampaign", utmParams.utmCampaign)
+      if (utmParams.utmContent) formDataToSend.append("utmContent", utmParams.utmContent)
+      if (utmParams.utmMedium) formDataToSend.append("utmMedium", utmParams.utmMedium)
+      if (utmParams.utmSource) formDataToSend.append("utmSource", utmParams.utmSource)
+      if (utmParams.gclid) formDataToSend.append("gclid", utmParams.gclid)
+
+      // Call Next.js API route (which will proxy to the external API)
+      const response = await fetch("/api/create-lead", {
+        method: "POST",
+        body: formDataToSend,
+      })
+
+      if (!response.ok) {
+        const errorData = await response.json()
+        throw new Error(errorData.error || `HTTP error! status: ${response.status}`)
+      }
+
+      const data = await response.json()
+
+      if (data.resp?.status === "SUCCESS") {
+        setSubmitStatus("success")
+        setSubmitMessage("Thank you! We will contact you shortly to process your Emergency Access Card.")
+        // Reset form
+        setFormData({
+          name: "",
+          phone: "",
+          email: "",
+          type: "family",
+        })
+      } else {
+        throw new Error(data.resp?.message || "Failed to submit request")
+      }
+    } catch (error) {
+      setSubmitStatus("error")
+      if (error instanceof TypeError && error.message.includes("fetch")) {
+        setSubmitMessage(
+          "Network error. Please check your internet connection and try again, or call us at 99000 89601."
+        )
+      } else {
+        setSubmitMessage(
+          error instanceof Error
+            ? error.message
+            : "Something went wrong. Please try again or call us at 99000 89601."
+        )
+      }
+      console.error("Form submission error:", error)
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -406,10 +485,9 @@ export default function EmergencyCardPage() {
                       <Input
                         id="email"
                         type="email"
-                        placeholder="Enter your email"
+                        placeholder="Enter your email (optional)"
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        required
                       />
                     </motion.div>
 
@@ -451,17 +529,58 @@ export default function EmergencyCardPage() {
                       </div>
                     </motion.div>
 
+                    {submitStatus === "success" && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="p-4 rounded-lg bg-green-50 border border-green-200 text-green-800"
+                      >
+                        <div className="flex items-center gap-2">
+                          <CheckCircle className="h-5 w-5 text-green-600" />
+                          <p className="text-sm font-medium">{submitMessage}</p>
+                        </div>
+                      </motion.div>
+                    )}
+
+                    {submitStatus === "error" && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="p-4 rounded-lg bg-red-50 border border-red-200 text-red-800"
+                      >
+                        <p className="text-sm font-medium">{submitMessage}</p>
+                      </motion.div>
+                    )}
+
                     <motion.div
                       initial={{ opacity: 0, y: 20 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
                       transition={{ delay: 0.5 }}
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
+                      whileHover={{ scale: isSubmitting ? 1 : 1.02 }}
+                      whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
                     >
-                      <Button type="submit" size="lg" className="w-full gradient-bg text-white hover:opacity-90 h-12">
-                        <CreditCard className="h-5 w-5 mr-2" />
-                        Request Emergency Card
+                      <Button
+                        type="submit"
+                        size="lg"
+                        className="w-full gradient-bg text-white hover:opacity-90 h-12"
+                        disabled={isSubmitting}
+                      >
+                        {isSubmitting ? (
+                          <>
+                            <motion.div
+                              animate={{ rotate: 360 }}
+                              transition={{ duration: 1, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
+                              className="h-5 w-5 border-2 border-white border-t-transparent rounded-full mr-2"
+                            />
+                            Submitting...
+                          </>
+                        ) : (
+                          <>
+                            <CreditCard className="h-5 w-5 mr-2" />
+                            Request Emergency Card
+                          </>
+                        )}
                       </Button>
                     </motion.div>
                   </form>
@@ -521,9 +640,9 @@ export default function EmergencyCardPage() {
                 className="gap-2 h-12 px-8 bg-white text-[#65349E] hover:bg-white/90"
                 asChild
               >
-                <a href="tel:9900089601">
+                <a href="tel:9900089602">
                   <Phone className="h-5 w-5" />
-                  Call Us - 99000 89601
+                  Call Us - 99000 89602
                 </a>
               </Button>
             </motion.div>

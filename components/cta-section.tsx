@@ -50,7 +50,7 @@ export function CTASection() {
             >
               <a href="tel:9900089601">
                 <Phone className="h-5 w-5" />
-                Call D.A.D - 99000 89601
+                Call D.A.D - 99000 89602
               </a>
             </Button>
             <Button

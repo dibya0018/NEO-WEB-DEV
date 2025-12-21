@@ -128,8 +128,8 @@ export function Card360Viewer() {
       >
         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-[#65349E] to-[#F04A89] text-white shadow-lg">
           <motion.div
-            animate={{ x: [-10, 10, -10] }}
-            transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
+            animate={{ x: [-10, 10] }}
+            transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY, repeatType: "reverse", ease: "easeInOut" }}
           >
             <MousePointerClick className="h-5 w-5" />
           </motion.div>

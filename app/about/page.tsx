@@ -175,7 +175,7 @@ export default function AboutPage() {
             >
               <div className="relative rounded-3xl overflow-hidden shadow-2xl">
                 <img
-                  src="/neo-look2.avif"
+                  src="/location.png"
                   alt="Neo TrueNorth Hospital - Modern Emergency Care Facility"
                   className="w-full h-auto object-cover"
                 />
@@ -189,9 +189,9 @@ export default function AboutPage() {
                 className="absolute -bottom-6 -left-6 bg-white rounded-2xl p-6 shadow-xl"
               >
                 <div className="flex items-center gap-4">
-                  <div className="w-14 h-14 rounded-full gradient-bg flex items-center justify-center">
+                  {/* <div className="w-14 h-14 rounded-full gradient-bg flex items-center justify-center">
                     <Heart className="h-7 w-7 text-white" />
-                  </div>
+                  </div> */}
                   <div>
                     <p className="text-2xl font-bold">1000+</p>
                     <p className="text-sm text-muted-foreground">Lives Impacted</p>

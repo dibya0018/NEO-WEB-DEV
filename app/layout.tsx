@@ -2,32 +2,19 @@ import type React from "react"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
+import Script from "next/script"
 import "./globals.css"
 
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
   title: "Neo TrueNorth | Emergency Healthcare When Every Second Counts",
-  description:
-    "Neo TrueNorth provides 24x7 emergency care with D.A.D (Dial A Doctor) service. Doctor in 60 seconds, treatment in 60 minutes.",
-  generator: "v0.app",
+  description: "Neo TrueNorth provides 24x7 emergency care with D.A.D (Dial A Doctor) service. Doctor in 60 seconds, treatment in 60 minutes.",
+  generator: "Sid",
   icons: {
-    icon: [
-      {
-        url: "/icon-light-32x32.png",
-        media: "(prefers-color-scheme: light)",
-      },
-      {
-        url: "/icon-dark-32x32.png",
-        media: "(prefers-color-scheme: dark)",
-      },
-      {
-        url: "/icon.svg",
-        type: "image/svg+xml",
-      },
-    ],
-    apple: "/apple-icon.png",
-  },
+    icon: "/icon.png", // Direct path to your icon
+    apple: "/icon.png" // Same icon for Apple devices
+  }
 }
 
 export default function RootLayout({
@@ -37,7 +24,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`font-sans antialiased`}>
+      <head>
+        <Script src="https://fyndbetter.com/chatbot/neotrue" strategy="afterInteractive" />
+      </head>
+      <body className={`font-sans antialiased h-screen w-full overflow-x-hidden`}>
         {children}
         <Analytics />
       </body>

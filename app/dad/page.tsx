@@ -230,7 +230,7 @@ export default function DADPage() {
                     >
                       <Phone className="h-6 w-6" />
                     </motion.div>
-                    Call D.A.D - 99000 89601
+                    Call D.A.D - 99000 89602
                   </a>
                 </Button>
               </motion.div>
@@ -284,7 +284,7 @@ export default function DADPage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.8 }}
-                className="absolute -bottom-6 left-6 right-6 bg-white rounded-2xl p-6 shadow-xl"
+                className="absolute -bottom-6 left-16 right-16 bg-white rounded-2xl p-6 shadow-xl"
               >
                 <motion.div 
                 animate={{ y: [0, -5] }} 
@@ -296,15 +296,15 @@ export default function DADPage() {
                 >
                   <div className="flex items-center gap-4">
                     <motion.div
-                      animate={{ rotate: [0, -10, 10, -10, 0] }}
-                      transition={{ repeat: Number.POSITIVE_INFINITY, duration: 1.5, repeatDelay: 2 }}
+                      animate={{ rotate: [0, 10] }}
+                      transition={{ repeat: Number.POSITIVE_INFINITY, duration: 1.5, repeatDelay: 2, repeatType: "reverse", ease: "easeInOut" }}
                       className="w-16 h-16 rounded-full gradient-bg flex items-center justify-center"
                     >
                       <Phone className="h-8 w-8 text-white" />
                     </motion.div>
                     <div>
                       <p className="text-sm text-muted-foreground">Emergency Helpline</p>
-                      <p className="text-3xl font-bold">99000 89601</p>
+                      <p className="text-3xl font-bold">99000 89602</p>
                     </div>
                   </div>
                 </motion.div>
@@ -529,9 +529,9 @@ export default function DADPage() {
                 className="gap-2 h-12 px-8 bg-white text-[#65349E] hover:bg-white/90"
                 asChild
               >
-                <a href="tel:9900089601">
+                <a href="tel:9900089602">
                   <Phone className="h-5 w-5" />
-                  Call D.A.D - 99000 89601
+                  Call D.A.D - 99000 89602
                 </a>
               </Button>
             </motion.div>
