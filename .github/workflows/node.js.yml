@@ -1,4 +1,4 @@
-name: Build and Deploy to Hostinger
+name: Build and Deploy Next.js to Hostinger
 
 on:
   push:
@@ -9,50 +9,40 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    # 1. Checkout the code from the private repo
     - name: Checkout Code
       uses: actions/checkout@v4
 
-    # 2. Setup Node.js environment
     - name: Setup Node.js
       uses: actions/setup-node@v4
       with:
-        node-version: '20' # Change this if you use a different version
+        node-version: '20'
         cache: 'npm'
 
-    # 3. Install Dependencies
     - name: Install Dependencies
       run: npm ci
 
-    # 4. Build the Project
-    # Ensure your package.json has a "build" script
-    - name: Build Static Files
+    - name: Build Static Site
       run: npm run build
+      # This runs "next build". With output: 'export' in config, 
+      # it generates an "out" folder.
 
-    # 5. Prepare SSH Key
     - name: Configure SSH
       run: |
         mkdir -p ~/.ssh/
         echo "${{ secrets.HOSTINGER_SSH_KEY }}" > ~/.ssh/id_rsa
         chmod 600 ~/.ssh/id_rsa
-        # Scan Hostinger's key to prevent "Unknown Host" errors
         ssh-keyscan -p ${{ secrets.HOSTINGER_SSH_PORT }} -H ${{ secrets.HOSTINGER_SSH_HOST }} >> ~/.ssh/known_hosts
 
-    # 6. Clean Remote Directory & Deploy
-    # This step empties public_html and uploads the new build folder
     - name: Deploy to Hostinger
       run: |
-        # Define your build output folder. 
-        # Common names are 'dist', 'build', or '.next'. 
-        # CHECK YOUR PROJECT: If your build folder is 'dist', keep it as 'dist/'.
-        SOURCE_DIR="dist/" 
+        # Next.js static export folder is "out"
+        SOURCE_DIR="out/" 
         
-        # 1. CLEAN: Delete contents of public_html (preserving the folder itself)
         echo "Cleaning remote public_html..."
         ssh -p ${{ secrets.HOSTINGER_SSH_PORT }} -i ~/.ssh/id_rsa ${{ secrets.HOSTINGER_SSH_USER }}@${{ secrets.HOSTINGER_SSH_HOST }} "rm -rf public_html/*"
         
-        # 2. UPLOAD: Copy new files using Rsync
         echo "Uploading new build..."
+        # We copy the CONTENTS of out/ into public_html/
         rsync -avz -e "ssh -p ${{ secrets.HOSTINGER_SSH_PORT }} -i ~/.ssh/id_rsa" ./$SOURCE_DIR ${{ secrets.HOSTINGER_SSH_USER }}@${{ secrets.HOSTINGER_SSH_HOST }}:public_html/
 
         echo "Deployment Complete!"
