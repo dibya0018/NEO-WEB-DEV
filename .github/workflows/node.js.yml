@@ -1,35 +1,46 @@
-name: Deploy via FTP
+name: Build and Deploy Next.js
 
 on:
   push:
     branches: [ "main" ]
 
 jobs:
-  web-deploy:
-    name: Deploy
+  build-and-deploy:
     runs-on: ubuntu-latest
+
     steps:
-    - name: Get latest code
+    - name: Checkout Code
       uses: actions/checkout@v4
-    
-    - name: Setup Node
+
+    - name: Setup Node.js
       uses: actions/setup-node@v4
       with:
         node-version: '20'
-    
-    - name: Install & Build
-      run: |
-        npm ci
-        npm run build
-        # This creates the 'out' folder
+        cache: 'npm'
 
-    - name: Sync files
-      uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-      with:
-        server: ${{ secrets.HOSTINGER_SSH_HOST }}
-        username: ${{ secrets.HOSTINGER_SSH_USER }}
-        password: ${{ secrets.HOSTINGER_PASSWORD }}
-        local-dir: ./out/
-        server-dir: ./public_html/
-        # This option deletes old files on the server automatically
-        dangerous-clean-slate: true
+    - name: Install Dependencies
+      run: npm ci
+
+    - name: Build Static Site
+      run: npm run build
+      # Generates "out" folder
+
+    # Install sshpass to allow password login
+    - name: Install sshpass
+      run: sudo apt-get install -y sshpass
+
+    - name: Deploy to Hostinger
+      run: |
+        SOURCE_DIR="out/"
+        
+        # 1. CLEAN REMOTE FOLDER
+        # We use sshpass to inject the password. 
+        # StrictHostKeyChecking=no prevents the "Are you sure?" prompt.
+        echo "Cleaning remote public_html..."
+        sshpass -p "${{ secrets.HOSTINGER_PASSWORD }}" ssh -o StrictHostKeyChecking=no -p ${{ secrets.HOSTINGER_SSH_PORT }} ${{ secrets.HOSTINGER_SSH_USER }}@${{ secrets.HOSTINGER_SSH_HOST }} "rm -rf public_html/*"
+        
+        # 2. UPLOAD NEW BUILD
+        echo "Uploading new build..."
+        sshpass -p "${{ secrets.HOSTINGER_PASSWORD }}" rsync -avz -e "ssh -p ${{ secrets.HOSTINGER_SSH_PORT }} -o StrictHostKeyChecking=no" ./$SOURCE_DIR ${{ secrets.HOSTINGER_SSH_USER }}@${{ secrets.HOSTINGER_SSH_HOST }}:public_html/
+
+        echo "Deployment Complete!"
