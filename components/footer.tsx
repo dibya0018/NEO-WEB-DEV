@@ -116,7 +116,7 @@ export function Footer() {
               </li>
               <li>
                 <Link href="/locations" className="hover:text-background transition-colors">
-                  Locations
+                  Locate Us
                 </Link>
               </li>
             </ul>

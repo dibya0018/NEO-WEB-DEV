@@ -230,7 +230,7 @@ export default function DADPage() {
                     >
                       <Phone className="h-5 w-5 sm:h-6 sm:w-6" />
                     </motion.div>
-                    <span className="whitespace-nowrap">Call D.A.D - 99000 89602</span>
+                    <span className="whitespace-nowrap">Call D.A.D</span>
                   </a>
                 </Button>
               </motion.div>
@@ -284,7 +284,7 @@ export default function DADPage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.8 }}
-                className="absolute -bottom-6 left-4 right-4 sm:left-16 sm:right-16 bg-white rounded-2xl p-4 sm:p-6 shadow-xl overflow-hidden"
+                className="absolute -bottom-6 left-4 right-4 sm:left-16 sm:right-16 rounded-2xl p-4 sm:p-6 shadow-xl overflow-hidden"
               >
                 <motion.div 
                 animate={{ y: [0, -5] }} 
@@ -294,18 +294,18 @@ export default function DADPage() {
                  repeatType: "reverse"
                 }}
                 >
-                  <div className="flex items-center gap-3 sm:gap-4 min-w-0">
-                    <motion.div
-                      animate={{ rotate: [0, 10] }}
-                      transition={{ repeat: Number.POSITIVE_INFINITY, duration: 1.5, repeatDelay: 2, repeatType: "reverse", ease: "easeInOut" }}
-                      className="w-12 h-12 sm:w-16 sm:h-16 rounded-full gradient-bg flex items-center justify-center flex-shrink-0"
-                    >
-                      <Phone className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
-                    </motion.div>
-                    <div className="min-w-0 flex-1">
-                      <p className="text-xs sm:text-sm text-muted-foreground">Emergency Helpline</p>
-                      <p className="text-lg sm:text-2xl md:text-3xl font-bold whitespace-nowrap overflow-hidden text-ellipsis">99000 89602</p>
-                    </div>
+                  <div className="w-full">
+                    <Button size="lg" className="w-full gradient-bg text-white hover:opacity-90 gap-2 h-16 text-lg rounded-t-none rounded-b-2xl" asChild>
+                      <a href="tel:9900089602">
+                        <motion.div
+                          animate={{ rotate: [0, -10, 10, -10, 0] }}
+                          transition={{ repeat: Number.POSITIVE_INFINITY, duration: 1.5, repeatDelay: 2 }}
+                        >
+                          <Phone className="h-5 w-5 sm:h-6 sm:w-6" />
+                        </motion.div>
+                        <span className="whitespace-nowrap">Call D.A.D</span>
+                      </a>
+                    </Button>
                   </div>
                 </motion.div>
               </motion.div>
