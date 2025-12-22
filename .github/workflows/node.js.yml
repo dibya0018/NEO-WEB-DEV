@@ -10,38 +10,46 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    # 1. Get the code
-    - name: Get latest code
-      uses: actions/checkout@v4
+      # 1. Get the code
+      - name: Get latest code
+        uses: actions/checkout@v4
 
-    # 2. Setup Node.js
-    - name: Setup Node
-      uses: actions/setup-node@v4
-      with:
-        node-version: '20'
-        cache: 'npm'
+      # 2. Setup Node.js
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
 
-    # 3. Build the project
-    - name: Install & Build
-      run: |
-        npm ci
-        npm run build
-        # Because of "output: export" in next.config.mjs, 
-        # this will generate an "out" folder.
+      # 3. Install deps & build (Next.js server build, NOT static export)
+      - name: Install & Build
+        run: |
+          npm ci
+          npm run build
 
-    # 4. Upload via FTP
-    - name: Sync files to Hostinger
-      uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-      with:
-        server: ${{ secrets.FTP_SERVER }}
-        username: ${{ secrets.FTP_USERNAME }}
-        password: ${{ secrets.FTP_PASSWORD }}
-        
-        # The folder Next.js builds to:
-        local-dir: ./out/
-        
-        # The exact path on Hostinger:
-        server-dir: /public_html/
-        
-        # This deletes old files in that folder before uploading (Clean Install)
-        dangerous-clean-slate: true
+      # 4. Prepare minimal production bundle for the server
+      - name: Prepare deploy folder
+        run: |
+          rm -rf deploy
+          mkdir -p deploy
+          cp package.json package-lock.json next.config.mjs deploy
+          cp -r .next public deploy
+          # keep node_modules so Hostinger can run `npm start` without building
+          cp -r node_modules deploy/node_modules
+
+      # 5. Upload via FTP
+      - name: Sync files to Hostinger
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+
+          # Folder we just created
+          local-dir: ./deploy/
+
+          # Target path on Hostinger where your Node/Next app runs
+          server-dir: /public_html/
+
+          # Optional: wipe before upload (only if /public_html is ONLY this app)
+          dangerous-clean-slate: true
