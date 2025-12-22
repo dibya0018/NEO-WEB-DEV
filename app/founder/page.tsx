@@ -55,67 +55,48 @@ export default function FounderPage() {
       {/* Founder Profile & Letter */}
       <section className="py-10 bg-white">
         <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-3 gap-12">
-            {/* Founder Profile Card */}
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="lg:col-span-1"
-            >
-              <div className="sticky top-24">
-                <Card className="bg-white border-border shadow-xl overflow-hidden">
-                  <div className="h-3 gradient-bg" />
-                  <CardContent className="p-8">
-                    <div className="relative mb-6">
-                      <div className="w-32 h-32 mx-auto rounded-full gradient-bg p-1">
-                        <img
-                          src="/owner.png"
-                          alt="Dr. Founder"
-                          className="w-full h-full rounded-full object-cover bg-white"
-                        />
-                      </div>
-                    </div>
-
-                    <div className="text-center space-y-2 mb-6">
-                      <h3 className="text-2xl font-bold">Dr. Ramesh Karmegam</h3>
-                      <p className="text-muted-foreground">Founder & CEO</p>
-                      <p className="text-sm text-muted-foreground">Neo TrueNorth Healthcare</p>
-                    </div>
-
-                    <div className="flex justify-center gap-4 pt-6 border-t border-border mt-6">
-                      <a href="https://www.linkedin.com/in/rameshkarmegam?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" className="text-muted-foreground hover:text-[#65349E] transition-colors">
-                        <Linkedin className="h-5 w-5" />
-                      </a>
-                      <a href="#" className="text-muted-foreground hover:text-[#65349E] transition-colors">
-                        <Twitter className="h-5 w-5" />
-                      </a>
-                    </div>
-
-                    <motion.div
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: 0.3 }}
-                      className="mt-6 p-4 rounded-xl bg-muted/50"
-                    >
-                      <p className="text-sm italic text-center text-muted-foreground">
-                        "Every second saved in an emergency is a life given a second chance."
-                      </p>
-                    </motion.div>
-                  </CardContent>
-                </Card>
-              </div>
-            </motion.div>
-
+          <div className="flex flex-col gap-12">
             {/* Founder's Letter */}
             <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="lg:col-span-2"
+              className="w-full max-w-4xl mx-auto"
             >
               <div className="prose prose-lg max-w-none">
+                {/* Moved Profile Card Here */}
+                <div className="mb-8">
+                  <Card className="bg-white border-border shadow-md overflow-hidden w-full max-w-sm">
+                    <div className="h-1 gradient-bg" />
+                    <CardContent className="p-4">
+                      <div className="flex items-start space-x-4">
+                        <div className="w-16 h-16 rounded-full gradient-bg p-0.5 flex-shrink-0">
+                          <img
+                            src="/owner.png"
+                            alt="Dr. Founder"
+                            className="w-full h-full rounded-full object-cover bg-white"
+                          />
+                        </div>
+                        
+                        <div className="space-y-0">
+                          <h3 className="text-lg font-semibold leading-tight">Dr. Ramesh Karmegam</h3>
+                          <p className="text-xs text-muted-foreground">Founder & CEO</p>
+                          <p className="text-[11px] text-muted-foreground">Neo TrueNorth Healthcare</p>
+                        </div>
+                      </div>
+
+                      <motion.div
+                        initial={{ opacity: 0, y: 5 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.1 }}
+                        className="mt-3 p-2 rounded-md bg-muted/40 w-full text-xs"
+                      >
+                      </motion.div>
+                    </CardContent>
+                  </Card>
+                </div>
+                
                 <div className="w-16 h-16 rounded-2xl gradient-bg flex items-center justify-center mb-8">
                   <Quote className="h-8 w-8 text-white" />
                 </div>
