@@ -4,17 +4,28 @@ export async function POST(request: NextRequest) {
   try {
     const body = await request.formData()
 
+    // Validate required fields
+    const name = body.get("name") as string
+    const phone = body.get("phone") as string
+
+    if (!name || !phone) {
+      return NextResponse.json(
+        { error: "Name and phone number are required" },
+        { status: 400 }
+      )
+    }
+
     // Prepare form data for the API
     const formParams = new URLSearchParams()
     
     // Required fields
     formParams.append("orgId", body.get("orgId") as string || "1750175112727x192042413945782270")
-    formParams.append("name", body.get("name") as string)
-    formParams.append("phone", body.get("phone") as string)
+    formParams.append("name", name.trim())
+    formParams.append("phone", phone.trim())
     
     // Optional fields
     const email = body.get("email") as string
-    if (email) formParams.append("email", email)
+    if (email && email.trim()) formParams.append("email", email.trim())
     
     const description = body.get("description") as string
     if (description) formParams.append("description", description)
@@ -61,7 +72,7 @@ export async function POST(request: NextRequest) {
   } catch (error) {
     console.error("API route error:", error)
     return NextResponse.json(
-      { error: "Internal server error" },
+      { error: error instanceof Error ? error.message : "Internal server error" },
       { status: 500 }
     )
   }
