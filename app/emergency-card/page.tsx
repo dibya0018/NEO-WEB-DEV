@@ -1,7 +1,7 @@
 "use client"
 
 import type React from "react"
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { motion } from "framer-motion"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
@@ -94,12 +94,6 @@ export default function EmergencyCardPage() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle")
   const [submitMessage, setSubmitMessage] = useState("")
-  const [particlePositions, setParticlePositions] = useState<number[]>([])
-
-  // Generate random positions only on client side to avoid hydration mismatch
-  useEffect(() => {
-    setParticlePositions(Array.from({ length: 15 }, () => Math.random() * 100))
-  }, [])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -584,7 +578,7 @@ export default function EmergencyCardPage() {
 
         {/* Animated particles */}
         <div className="absolute inset-0 overflow-hidden">
-          {particlePositions.map((left, i) => (
+          {[...Array(15)].map((_, i) => (
             <motion.div
               key={i}
               animate={{
@@ -592,13 +586,13 @@ export default function EmergencyCardPage() {
                 opacity: [0, 1, 0],
               }}
               transition={{
-                duration: 4 + (i % 3) * 1.5,
+                duration: 4 + Math.random() * 3,
                 repeat: Number.POSITIVE_INFINITY,
                 delay: i * 0.3,
               }}
               className="absolute w-1 h-1 bg-white/30 rounded-full"
               style={{
-                left: `${left}%`,
+                left: `${Math.random() * 100}%`,
                 bottom: 0,
               }}
             />

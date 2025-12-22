@@ -1,6 +1,5 @@
 "use client"
 
-import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
@@ -114,13 +113,6 @@ const itemVariants = {
 }
 
 export default function DADPage() {
-  const [particlePositions, setParticlePositions] = useState<number[]>([])
-
-  // Generate random positions only on client side to avoid hydration mismatch
-  useEffect(() => {
-    setParticlePositions(Array.from({ length: 10 }, () => Math.random() * 100))
-  }, [])
-
   return (
     <main className="min-h-screen bg-white overflow-x-hidden">
       <Header />
@@ -475,7 +467,7 @@ export default function DADPage() {
         <div className="absolute inset-0 gradient-bg" />
 
         <div className="absolute inset-0 overflow-hidden">
-          {particlePositions.map((left, i) => (
+          {[...Array(10)].map((_, i) => (
             <motion.div
               key={i}
               animate={{
@@ -483,13 +475,13 @@ export default function DADPage() {
                 opacity: [0, 1, 0],
               }}
               transition={{
-                duration: 4 + (i % 3) * 1.5,
+                duration: 4 + Math.random() * 3,
                 repeat: Number.POSITIVE_INFINITY,
                 delay: i * 0.5,
               }}
               className="absolute w-1 h-1 bg-white/30 rounded-full"
               style={{
-                left: `${left}%`,
+                left: `${Math.random() * 100}%`,
                 bottom: 0,
               }}
             />
