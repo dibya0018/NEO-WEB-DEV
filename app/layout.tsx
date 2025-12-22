@@ -2,7 +2,7 @@ import type React from "react"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
-import Script from "next/script"
+import { ConditionalChatbot } from "@/components/conditional-chatbot"
 import "./globals.css"
 
 const inter = Inter({ subsets: ["latin"] })
@@ -24,10 +24,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="overflow-x-hidden">
-      <head>
-        <Script src="https://fyndbetter.com/chatbot/neotrue" strategy="afterInteractive" />
-      </head>
       <body className={`font-sans antialiased h-screen w-full overflow-x-hidden`}>
+        <ConditionalChatbot />
         {children}
         <Analytics />
       </body>

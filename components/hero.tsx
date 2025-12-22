@@ -109,9 +109,7 @@ export function Hero() {
                      asChild
                     >
                      <a
-                     href="https://appointment.bipminds.com/"
-                     target="_blank"
-                     rel="noopener noreferrer"
+                     href="/Appointment"
                      >
                      <Calendar className="h-5 w-5 sm:h-6 sm:w-6 md:h-7 md:w-7" />
                      <span className="whitespace-nowrap">Book Appointment</span>
