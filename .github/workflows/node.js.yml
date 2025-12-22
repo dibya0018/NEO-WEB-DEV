@@ -21,21 +21,19 @@ jobs:
           node-version: '20'
           cache: 'npm'
 
-      # 3. Install deps & build (Next.js server build, NOT static export)
+      # 3. Install deps & build (Static export for Hostinger shared hosting)
       - name: Install & Build
         run: |
           npm ci
           npm run build
 
-      # 4. Prepare minimal production bundle for the server
+      # 4. Prepare static files for deployment
       - name: Prepare deploy folder
         run: |
           rm -rf deploy
           mkdir -p deploy
-          cp package.json package-lock.json next.config.mjs deploy
-          cp -r .next public deploy
-          # keep node_modules so Hostinger can run `npm start` without building
-          cp -r node_modules deploy/node_modules
+          # Copy static export output
+          cp -r out/* deploy/
 
       # 5. Upload via FTP
       - name: Sync files to Hostinger

@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Note: We removed `output: 'export'` because it disables API routes.
-  // This app uses `app/api/create-lead/route.ts`, which requires a Node/Edge runtime.
+  // Static export for Hostinger shared hosting (doesn't support Node.js)
+  output: 'export',
   typescript: {
     ignoreBuildErrors: true,
   },
