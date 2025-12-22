@@ -38,14 +38,14 @@ const steps = [
 
 export function HowItWorks() {
   return (
-    <section id="how-it-works" className="py-20 bg-white overflow-hidden">
+    <section id="how-it-works" className="py-12 sm:py-16 md:py-20 bg-white overflow-hidden">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center max-w-2xl mx-auto mb-16"
+          className="text-center max-w-2xl mx-auto mb-8 sm:mb-12 md:mb-16"
         >
           <motion.span
             initial={{ opacity: 0, scale: 0.8 }}

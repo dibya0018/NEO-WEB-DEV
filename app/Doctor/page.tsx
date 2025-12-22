@@ -106,7 +106,7 @@ export default function DoctorPage() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col bg-gray-50">
+    <div className="min-h-screen flex flex-col bg-gray-50 overflow-x-hidden">
       <Header />
       <main className="flex-1 py-12">
         <div className="container mx-auto px-4 relative">

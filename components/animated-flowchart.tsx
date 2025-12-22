@@ -30,7 +30,7 @@ export function AnimatedFlowchart({ steps, columns = 4 }: AnimatedFlowchartProps
         />
       </div>
 
-      <div className={`grid md:grid-cols-2 ${gridCols} gap-8 md:gap-10`}>
+      <div className={`grid md:grid-cols-2 ${gridCols} gap-8 md:gap-10 items-stretch`}>
         {steps.map((item, index) => (
           <motion.div
             key={index}
@@ -41,9 +41,9 @@ export function AnimatedFlowchart({ steps, columns = 4 }: AnimatedFlowchartProps
               duration: 0.5,
               delay: index * 0.15,
             }}
-            className="relative"
+            className="relative h-full"
           >
-            <div className="relative bg-white rounded-xl border-2 border-[#65349E]/20 p-6 hover:shadow-lg transition-shadow">
+            <div className="relative bg-white rounded-xl border-2 border-[#65349E]/20 p-6 hover:shadow-lg transition-shadow h-full flex flex-col">
               {/* Step number badge */}
               <div className="absolute -top-4 left-6 w-10 h-10 rounded-full bg-gradient-to-br from-[#65349E] to-[#F04A89] flex items-center justify-center shadow-md">
                 <span className="text-lg font-bold text-white">{item.step}</span>
@@ -58,7 +58,7 @@ export function AnimatedFlowchart({ steps, columns = 4 }: AnimatedFlowchartProps
 
               {/* Content */}
               <h3 className="text-xl font-semibold mb-2 text-gray-900">{item.title}</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
+              <p className="text-sm text-muted-foreground leading-relaxed flex-1">{item.description}</p>
             </div>
           </motion.div>
         ))}

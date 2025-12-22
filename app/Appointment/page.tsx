@@ -5,7 +5,7 @@ import { Footer } from "@/components/footer"
 
 export default function AppointmentPage() {
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col overflow-x-hidden">
       <Header />
       <div className="flex-grow relative" style={{ height: 'calc(100vh - 4rem)' }}>
         <div className="absolute inset-0 overflow-hidden">

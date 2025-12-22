@@ -282,7 +282,7 @@ function WhyChooseUs() {
 
 export default function ServicesPage() {
   return (
-    <div className="relative min-h-screen">
+    <div className="relative min-h-screen overflow-x-hidden">
       <div className="fixed inset-0 -z-10">
         <img
           src="/abstract-medical-pattern-background-subtle.jpg"

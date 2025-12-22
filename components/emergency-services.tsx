@@ -110,25 +110,25 @@ export function EmergencyServices() {
           className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"
         >
           {services.map((service, index) => (
-            <motion.div key={index} variants={itemVariants}>
-              <HoverCard3D>
-                <Card className="group hover:shadow-xl transition-all duration-300 border-border/50 bg-white h-full">
-                  <CardContent className="p-4 sm:p-6">
+            <motion.div key={index} variants={itemVariants} className="h-full">
+              <HoverCard3D className="h-full">
+                <Card className="group hover:shadow-xl transition-all duration-300 border-border/50 bg-white h-full flex flex-col">
+                  <CardContent className="p-4 sm:p-6 flex flex-col flex-1">
                     <motion.div
                       whileHover={{ scale: 1.1, rotate: 5 }}
                       whileTap={{ scale: 0.9 }}
                       transition={{ type: "spring", stiffness: 300 }}
-                      className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl flex items-center justify-center mb-3 sm:mb-4"
+                      className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl flex items-center justify-center mb-3 sm:mb-4 flex-shrink-0"
                       style={{
                         background: `linear-gradient(135deg, ${service.color}, ${service.color}dd)`,
                       }}
                     >
                       <service.icon className="h-6 w-6 sm:h-7 sm:w-7 text-white" />
                     </motion.div>
-                    <h3 className="text-lg sm:text-xl font-semibold mb-2 group-hover:text-[#65349E] transition-colors">
+                    <h3 className="text-lg sm:text-xl font-semibold mb-2 group-hover:text-[#65349E] transition-colors flex-shrink-0">
                       {service.title}
                     </h3>
-                    <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">{service.description}</p>
+                    <p className="text-muted-foreground text-sm sm:text-base leading-relaxed flex-1">{service.description}</p>
                   </CardContent>
                 </Card>
               </HoverCard3D>

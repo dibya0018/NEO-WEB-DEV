@@ -177,11 +177,11 @@ export default function EmergencyCardPage() {
   }
 
   return (
-    <main className="h-screen bg-white overflow-hidden flex flex-col">
+    <main className="min-h-screen bg-white overflow-x-hidden">
       <Header />
 
       {/* Hero Section */}
-      <section className="flex-shrink-0 relative py-12 lg:py-16 overflow-hidden">
+      <section className="relative py-12 lg:py-16 overflow-x-hidden">
         <div className="absolute inset-0 overflow-hidden">
           <motion.div
             animate={{
@@ -284,13 +284,13 @@ export default function EmergencyCardPage() {
         </div>
       </section>
 
-      {/* Benefits Section - Swipeable Carousel */}
-      <section className="flex-1 bg-muted/30 overflow-hidden flex flex-col">
-        <div className="container mx-auto px-4 py-8">
+      {/* Benefits Section - Grid Layout */}
+      <section className="py-12 sm:py-16 md:py-20 bg-muted/30 overflow-x-hidden">
+        <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-center max-w-2xl mx-auto mb-8"
+            className="text-center max-w-2xl mx-auto mb-8 sm:mb-12 md:mb-16"
           >
             <motion.span
               initial={{ opacity: 0, scale: 0.8 }}
@@ -304,42 +304,34 @@ export default function EmergencyCardPage() {
             </h2>
           </motion.div>
 
-          <div className="relative overflow-hidden">
-            <motion.div
-              className="flex gap-6 cursor-grab active:cursor-grabbing"
-              drag="x"
-              dragConstraints={{ left: -((benefits.length - 1) * 320), right: 0 }}
-              dragElastic={0.2}
-              whileDrag={{ cursor: "grabbing" }}
-            >
-              {benefits.map((benefit, index) => (
-                <motion.div
-                  key={index}
-                  className="flex-shrink-0 w-80"
-                  initial={{ opacity: 0, x: 50 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                >
-                  <AnimatedCard
-                    icon={benefit.icon}
-                    title={benefit.title}
-                    description={benefit.description}
-                    index={index}
-                  />
-                </motion.div>
-              ))}
-            </motion.div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
+            {benefits.map((benefit, index) => (
+              <motion.div
+                key={index}
+                className="h-full"
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+              >
+                <AnimatedCard
+                  icon={benefit.icon}
+                  title={benefit.title}
+                  description={benefit.description}
+                  index={index}
+                />
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Who It's For - Swipeable Carousel */}
-      <section className="flex-1 bg-muted/30 overflow-hidden flex flex-col">
-        <div className="container mx-auto px-4 py-8">
+      {/* Who It's For - Grid Layout */}
+      <section className="py-12 sm:py-16 md:py-20 bg-muted/30 overflow-x-hidden">
+        <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-center max-w-2xl mx-auto mb-8"
+            className="text-center max-w-2xl mx-auto mb-8 sm:mb-12 md:mb-16"
           >
             <motion.span
               initial={{ opacity: 0, scale: 0.8 }}
@@ -353,37 +345,29 @@ export default function EmergencyCardPage() {
             </h2>
           </motion.div>
 
-          <div className="relative overflow-hidden">
-            <motion.div
-              className="flex gap-6 cursor-grab active:cursor-grabbing"
-              drag="x"
-              dragConstraints={{ left: -((targetAudience.length - 1) * 320), right: 0 }}
-              dragElastic={0.2}
-              whileDrag={{ cursor: "grabbing" }}
-            >
-              {targetAudience.map((item, index) => (
-                <motion.div
-                  key={index}
-                  className="flex-shrink-0 w-80"
-                  initial={{ opacity: 0, x: 50 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                >
-                  <AnimatedCard
-                    icon={item.icon}
-                    title={item.title}
-                    description={item.description}
-                    index={index}
-                  />
-                </motion.div>
-              ))}
-            </motion.div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
+            {targetAudience.map((item, index) => (
+              <motion.div
+                key={index}
+                className="h-full"
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+              >
+                <AnimatedCard
+                  icon={item.icon}
+                  title={item.title}
+                  description={item.description}
+                  index={index}
+                />
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Request Card Form */}
-      <section className="flex-1 bg-white overflow-y-auto min-h-0">
+      <section className="py-12 sm:py-16 md:py-20 bg-white overflow-x-hidden">
         <div className="container mx-auto px-4 py-8">
           <div className="grid lg:grid-cols-2 gap-8 items-start max-h-full">
             <motion.div
@@ -589,7 +573,7 @@ export default function EmergencyCardPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="flex-shrink-0 py-12 relative overflow-hidden">
+      <section className="py-12 sm:py-16 md:py-20 relative overflow-x-hidden">
         <div className="absolute inset-0 gradient-bg" />
 
         {/* Animated particles */}

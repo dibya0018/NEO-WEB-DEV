@@ -25,8 +25,9 @@ export function AnimatedCard({ icon: Icon, title, description, index = 0, stepNu
         stiffness: 100,
       }}
       whileHover={{ y: -8, transition: { duration: 0.3 } }}
+      className="h-full"
     >
-      <Card className="h-full bg-white border-border hover:shadow-2xl transition-all duration-300 relative overflow-hidden group">
+      <Card className="h-full bg-white border-border hover:shadow-2xl transition-all duration-300 relative overflow-hidden group flex flex-col">
         {/* Background gradient on hover */}
         <motion.div
           initial={{ opacity: 0 }}
@@ -36,27 +37,27 @@ export function AnimatedCard({ icon: Icon, title, description, index = 0, stepNu
 
         {stepNumber && <div className="absolute top-2 right-4 text-6xl font-bold text-muted/10">{stepNumber}</div>}
 
-        <CardContent className="p-6 relative z-10">
+        <CardContent className="p-6 relative z-10 flex flex-col flex-1">
           <motion.div
             whileHover={{ scale: 1.1, rotate: 5 }}
             transition={{ type: "spring", stiffness: 300 }}
-            className="w-14 h-14 rounded-xl gradient-bg flex items-center justify-center mb-4 shadow-lg"
+            className="w-14 h-14 rounded-xl gradient-bg flex items-center justify-center mb-4 shadow-lg flex-shrink-0"
           >
             <motion.div initial={{ rotate: 0 }} whileHover={{ rotate: 360 }} transition={{ duration: 0.5 }}>
               <Icon className="h-7 w-7 text-white" />
             </motion.div>
           </motion.div>
 
-          <motion.h3 className="text-xl font-semibold mb-2 group-hover:text-[#65349E] transition-colors">
+          <motion.h3 className="text-xl font-semibold mb-2 group-hover:text-[#65349E] transition-colors flex-shrink-0">
             {title}
           </motion.h3>
-          <p className="text-muted-foreground">{description}</p>
+          <p className="text-muted-foreground flex-1 leading-relaxed">{description}</p>
 
           {/* Animated underline on hover */}
           <motion.div
             initial={{ scaleX: 0 }}
             whileHover={{ scaleX: 1 }}
-            className="h-0.5 gradient-bg mt-4 origin-left"
+            className="h-0.5 gradient-bg mt-4 origin-left flex-shrink-0"
           />
         </CardContent>
       </Card>

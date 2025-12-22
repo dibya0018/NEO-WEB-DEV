@@ -33,9 +33,9 @@ export function Hero() {
         <div className="absolute inset-0 bg-gradient-to-b from-white/60 via-white/50 to-white/60 md:from-white/70 md:via-white/60 md:to-white/70" />
       </div>
 
-      <div className="container mx-auto px-4 sm:px-6 relative z-10 py-8 md:py-20">
+      <div className="container mx-auto px-4 sm:px-6 relative z-10 py-6 sm:py-8 md:py-20">
         <div className="max-w-4xl mx-auto text-center">
-          <div className="space-y-4 md:space-y-6 lg:space-y-8">
+          <div className="space-y-3 sm:space-y-4 md:space-y-6 lg:space-y-8">
             <motion.h1
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -46,7 +46,7 @@ export function Hero() {
   initial={{ opacity: 0, y: -30 }}
   animate={{ opacity: 1, y: 0 }}
   transition={{ duration: 0.6, delay: 0.2 }}
-  className="bg-gradient-to-r from-[#65349E] via-[#F04A89] to-[#65349E] bg-clip-text text-transparent inline-block mt-12 sm:mt-16 md:mt-20 lg:mt-24 xl:mt-0"
+  className="bg-gradient-to-r from-[#65349E] via-[#F04A89] to-[#65349E] bg-clip-text text-transparent inline-block mt-8 sm:mt-12 md:mt-20 lg:mt-24 xl:mt-0"
 >
   When Every Second...
 </motion.span>
@@ -77,7 +77,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.6 }}
-              className="flex justify-center pt-4 md:pt-6 px-4"
+              className="flex justify-center pt-3 sm:pt-4 md:pt-6 px-4"
             >
               <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
@@ -124,7 +124,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.8 }}
-              className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 md:gap-6 pt-2 md:pt-4 px-4"
+              className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 md:gap-4 lg:gap-6 pt-2 sm:pt-3 md:pt-4 px-4"
             >
               {[
                 { icon: Clock, text: "60 Sec Response", color: "#F04A89" },
@@ -136,7 +136,7 @@ export function Hero() {
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.9 + i * 0.1 }}
-                  className="flex items-center gap-2 bg-white backdrop-blur-sm px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-border"
+                  className="flex items-center gap-1.5 sm:gap-2 bg-white backdrop-blur-sm px-2.5 sm:px-3 md:px-4 py-1 sm:py-1.5 md:py-2 rounded-full border border-border"
                 >
                   <item.icon className="h-4 w-4 sm:h-5 sm:w-5" style={{ color: item.color }} />
                   <span className="text-xs sm:text-sm font-medium text-foreground whitespace-nowrap">{item.text}</span>

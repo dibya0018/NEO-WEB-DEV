@@ -38,7 +38,7 @@ const itemVariants = {
 
 export default function LocationsPage() {
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-white overflow-x-hidden">
   <section className="relative h-screen">
     {/* Background Image - Only for this section */}
     <div className="absolute inset-0">

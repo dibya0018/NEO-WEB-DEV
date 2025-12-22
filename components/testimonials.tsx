@@ -2,30 +2,22 @@
 
 import { motion } from "framer-motion"
 import { Card, CardContent } from "@/components/ui/card"
-import { Quote, Star } from "lucide-react"
+import Link from "next/link"
+import { ArrowRight } from "lucide-react"
 
-const testimonials = [
+const youtubeVideos = [
   {
-    name: "Priya Sharma",
-    role: "Mother of 2",
-    content:
-      "When my son had a severe asthma attack at midnight, D.A.D connected us to a doctor within seconds. The hospital team was ready when we arrived. They saved my son's life.",
-    rating: 5,
+    id: 'n6oNUdF3_GA',
+    url: 'https://youtube.com/shorts/n6oNUdF3_GA?si=1UNBL5tpwga8ZwEO'
   },
   {
-    name: "Rajesh Kumar",
-    role: "Corporate Professional",
-    content:
-      "The Emergency Access Card gave us peace of mind. When my father had chest pain, we didn't waste time worrying about payments. Priority treatment started immediately.",
-    rating: 5,
+    id: 'XTL5kKnKJ3Y',
+    url: 'https://youtube.com/shorts/XTL5kKnKJ3Y?si=WPEBLCvqxumVw8sn'
   },
   {
-    name: "Ananya Reddy",
-    role: "Apartment Association President",
-    content:
-      "We've enrolled our entire apartment community with NeoTrueNorth. Knowing that expert emergency care is just a call away has been invaluable for all 200 families.",
-    rating: 5,
-  },
+    id: 'GRR3VlU_WZ8',
+    url: 'https://youtube.com/shorts/GRR3VlU_WZ8?si=vrLhBqDZYahR16CC'
+  }
 ]
 
 const containerVariants = {
@@ -68,46 +60,41 @@ export function Testimonials() {
           viewport={{ once: true }}
           className="grid md:grid-cols-3 gap-6"
         >
-          {testimonials.map((testimonial, index) => (
-            <motion.div key={index} variants={itemVariants}>
-              <Card className="bg-white border-border hover:shadow-xl transition-all duration-300 h-full">
-                <CardContent className="p-6">
-                  <motion.div
-                    whileHover={{ scale: 1.1 }}
-                    className="w-12 h-12 rounded-xl gradient-bg flex items-center justify-center mb-4"
-                  >
-                    <Quote className="h-6 w-6 text-white" />
-                  </motion.div>
-
-                  <div className="flex gap-1 mb-4">
-                    {[...Array(testimonial.rating)].map((_, i) => (
-                      <motion.div
-                        key={i}
-                        initial={{ opacity: 0, scale: 0 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.3 + i * 0.1 }}
-                      >
-                        <Star className="h-4 w-4 fill-[#F04A89] text-[#F04A89]" />
-                      </motion.div>
-                    ))}
-                  </div>
-
-                  <p className="text-muted-foreground mb-6 leading-relaxed">"{testimonial.content}"</p>
-
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full gradient-bg flex items-center justify-center">
-                      <span className="text-white font-semibold text-sm">{testimonial.name.charAt(0)}</span>
-                    </div>
-                    <div>
-                      <p className="font-semibold">{testimonial.name}</p>
-                      <p className="text-sm text-muted-foreground">{testimonial.role}</p>
-                    </div>
+          {youtubeVideos.map((video, index) => (
+            <motion.div key={video.id} variants={itemVariants}>
+              <Card className="bg-white border-border hover:shadow-xl transition-all duration-300 overflow-hidden">
+                <CardContent className="p-0">
+                  <div className="relative w-full aspect-[9/16] max-h-[500px] mx-auto">
+                    <iframe
+                      src={`https://www.youtube.com/embed/${video.id}`}
+                      title={`Testimonial Video ${index + 1}`}
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allowFullScreen
+                      className="absolute inset-0 w-full h-full"
+                      loading="lazy"
+                    />
                   </div>
                 </CardContent>
               </Card>
             </motion.div>
           ))}
+        </motion.div>
+
+        {/* View More Link */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="text-center mt-12"
+        >
+          <Link
+            href="/testimonials"
+            className="inline-flex items-center gap-2 text-[#65349E] hover:text-[#F04A89] font-semibold transition-colors group"
+          >
+            <span>View More</span>
+            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+          </Link>
         </motion.div>
       </div>
     </section>

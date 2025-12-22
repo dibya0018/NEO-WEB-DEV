@@ -38,7 +38,7 @@ export default function Inquiry() {
   if (!mounted) return null
 
   return (
-    <section id="inquiry" className="py-20 relative overflow-hidden">
+    <section id="inquiry" className="py-20 relative overflow-hidden overflow-x-hidden">
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row gap-12 items-center">
           {/* Left Content */}

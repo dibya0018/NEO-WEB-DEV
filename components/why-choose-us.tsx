@@ -43,7 +43,7 @@ export function WhyChooseUs() {
     })))
   }, [])
   return (
-    <section id="about" className="py-20 bg-muted/30 relative overflow-hidden">
+    <section id="about" className="py-12 sm:py-16 md:py-20 bg-muted/30 relative overflow-hidden">
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {dots.map((dot, i) => (
           <motion.div
@@ -72,7 +72,7 @@ export function WhyChooseUs() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center max-w-2xl mx-auto mb-16"
+            className="text-center max-w-2xl mx-auto mb-8 sm:mb-12 md:mb-16"
           >
             <span className="text-sm font-semibold gradient-text uppercase tracking-wider">Why Neo TrueNorth</span>
             <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 text-balance">

@@ -114,7 +114,7 @@ const itemVariants = {
 
 export default function DADPage() {
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-white overflow-x-hidden">
       <Header />
 
       {/* Hero Section */}
@@ -270,43 +270,51 @@ export default function DADPage() {
             >
              <motion.div 
               whileHover={{ scale: 1.02 }} 
-              className="relative rounded-3xl overflow-hidden shadow-2xl w-[85%] mx-auto"  // Reduced from w-[90%]
+              className="relative rounded-3xl overflow-visible shadow-2xl w-[85%] mx-auto"
             >
             <img
             src="/replace.jpeg"
             alt="D.A.D - Dial A Doctor"
-            className="w-full h-auto object-cover"
+            className="w-full h-auto object-cover rounded-3xl"
              />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent rounded-3xl pointer-events-none" />
             </motion.div>
 
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.8 }}
-                className="absolute -bottom-6 left-4 right-4 sm:left-16 sm:right-16 rounded-2xl p-4 sm:p-6 shadow-xl overflow-hidden"
+                className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-[calc(85%-1rem)] sm:w-[calc(85%-3rem)] z-10 px-2"
               >
                 <motion.div 
-                animate={{ y: [0, -5] }} 
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                animate={{ y: [0, -3] }} 
                 transition={{ 
-                 duration: 3, 
+                 duration: 2.5, 
                  repeat: Number.POSITIVE_INFINITY,
                  repeatType: "reverse"
                 }}
+                className="relative"
                 >
-                  <div className="w-full">
-                    <Button size="lg" className="w-full gradient-bg text-white hover:opacity-90 gap-2 h-16 text-lg rounded-t-none rounded-b-2xl" asChild>
-                      <a href="tel:9900089602">
-                        <motion.div
-                          animate={{ rotate: [0, -10, 10, -10, 0] }}
-                          transition={{ repeat: Number.POSITIVE_INFINITY, duration: 1.5, repeatDelay: 2 }}
-                        >
-                          <Phone className="h-5 w-5 sm:h-6 sm:w-6" />
-                        </motion.div>
-                        <span className="whitespace-nowrap">Call D.A.D</span>
-                      </a>
-                    </Button>
-                  </div>
+                  {/* Glow effect */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-[#65349E] via-[#F04A89] to-[#65349E] rounded-2xl blur-lg opacity-60 -z-10" />
+                  
+                  <Button 
+                    size="lg" 
+                    className="w-full gradient-bg text-white hover:opacity-95 gap-3 h-14 sm:h-16 text-base sm:text-lg font-semibold rounded-2xl shadow-2xl border-2 border-white/20 backdrop-blur-sm transition-all duration-300" 
+                    asChild
+                  >
+                    <a href="tel:9900089602">
+                      <motion.div
+                        animate={{ rotate: [0, -10, 10, -10, 0] }}
+                        transition={{ repeat: Number.POSITIVE_INFINITY, duration: 1.5, repeatDelay: 2 }}
+                      >
+                        <Phone className="h-5 w-5 sm:h-6 sm:w-6" />
+                      </motion.div>
+                      <span className="whitespace-nowrap">Call D.A.D</span>
+                    </a>
+                  </Button>
                 </motion.div>
               </motion.div>
             </motion.div>

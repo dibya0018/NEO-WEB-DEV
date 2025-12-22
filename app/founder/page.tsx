@@ -11,7 +11,7 @@ import { Quote, Phone, ArrowRight, Heart, Clock, Shield, Linkedin, Twitter } fro
 
 export default function FounderPage() {
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-white overflow-x-hidden">
       <Header />
 
       {/* Hero Section */}
@@ -64,38 +64,58 @@ export default function FounderPage() {
               className="w-full max-w-4xl mx-auto"
             >
               <div className="prose prose-lg max-w-none">
-                {/* Moved Profile Card Here */}
-                <div className="mb-8">
-                  <Card className="bg-white border-border shadow-md overflow-hidden w-full max-w-sm">
-                    <div className="h-1 gradient-bg" />
-                    <CardContent className="p-4">
-                      <div className="flex items-start space-x-4">
-                        <div className="w-16 h-16 rounded-full gradient-bg p-0.5 flex-shrink-0">
-                          <img
-                            src="/owner.png"
-                            alt="Dr. Founder"
-                            className="w-full h-full rounded-full object-cover bg-white"
-                          />
+                {/* Founder Profile Card - Redesigned */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  className="mb-12"
+                >
+                  <Card className="bg-white border-border shadow-xl overflow-hidden w-full max-w-md mx-auto">
+                    <div className="h-2 gradient-bg" />
+                    <CardContent className="p-6 sm:p-8">
+                      <div className="flex flex-col items-center text-center space-y-4">
+                        <div className="relative">
+                          <div className="w-32 h-32 sm:w-40 sm:h-40 rounded-full gradient-bg p-1.5 shadow-lg">
+                            <img
+                              src="/owner.png"
+                              alt="Dr. Ramesh Karmegam"
+                              className="w-full h-full rounded-full object-cover bg-white"
+                            />
+                          </div>
+                          <div className="absolute -bottom-2 -right-2 w-8 h-8 rounded-full gradient-bg flex items-center justify-center shadow-md">
+                            <Heart className="h-4 w-4 text-white" />
+                          </div>
                         </div>
                         
-                        <div className="space-y-0">
-                          <h3 className="text-lg font-semibold leading-tight">Dr. Ramesh Karmegam</h3>
-                          <p className="text-xs text-muted-foreground">Founder & CEO</p>
-                          <p className="text-[11px] text-muted-foreground">Neo TrueNorth Healthcare</p>
+                        <div className="space-y-1">
+                          <h3 className="text-2xl sm:text-3xl font-bold">Dr. Ramesh Karmegam</h3>
+                          <p className="text-base sm:text-lg text-muted-foreground font-medium">Founder & CEO</p>
+                          <p className="text-sm sm:text-base text-muted-foreground">Neo TrueNorth Healthcare</p>
+                        </div>
+
+                        <div className="flex justify-center gap-4 pt-2">
+                          <a 
+                            href="https://www.linkedin.com/in/rameshkarmegam?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" 
+                            className="text-muted-foreground hover:text-[#65349E] transition-colors"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="LinkedIn"
+                          >
+                            <Linkedin className="h-5 w-5" />
+                          </a>
+                          <a 
+                            href="#" 
+                            className="text-muted-foreground hover:text-[#65349E] transition-colors"
+                            aria-label="Twitter"
+                          >
+                            <Twitter className="h-5 w-5" />
+                          </a>
                         </div>
                       </div>
-
-                      <motion.div
-                        initial={{ opacity: 0, y: 5 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.1 }}
-                        className="mt-3 p-2 rounded-md bg-muted/40 w-full text-xs"
-                      >
-                      </motion.div>
                     </CardContent>
                   </Card>
-                </div>
+                </motion.div>
                 
                 <div className="w-16 h-16 rounded-2xl gradient-bg flex items-center justify-center mb-8">
                   <Quote className="h-8 w-8 text-white" />
