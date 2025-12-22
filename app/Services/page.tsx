@@ -216,9 +216,9 @@ function WhyChooseUs() {
               opacity: [0, 0.5, 0],
             }}
             transition={{
-              duration: 3 + Math.random() * 2,
+              duration: 3 + (i % 3) * 0.7,
               repeat: Number.POSITIVE_INFINITY,
-              delay: Math.random() * 2,
+              delay: (i % 4) * 0.5,
             }}
           />
         ))}
