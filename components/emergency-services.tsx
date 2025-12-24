@@ -94,7 +94,10 @@ export function EmergencyServices() {
           className="text-center max-w-2xl mx-auto mb-8 sm:mb-12 md:mb-16"
         >
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mt-4 mb-4 sm:mb-6 text-balance px-2">
-            <span className="gradient-text">Our services - Is it an emergency?</span>
+            <div className="flex flex-col">
+              <span className="gradient-text">Our services</span>
+              <span className="gradient-text">Is it an emergency?</span>
+            </div>
           </h2>
           <p className="text-muted-foreground text-base sm:text-lg px-4">
             From cardiac emergencies to trauma care, our specialized teams are ready 24x7 to provide life-saving
