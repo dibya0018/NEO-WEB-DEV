@@ -22,7 +22,7 @@ export function Footer() {
             </p>
             <div className="flex items-center gap-3 text-background/70">
               <Phone className="h-5 w-5" />
-              <span className="font-semibold text-background whitespace-nowrap">99000 89601</span>
+              <a href="tel:+919900089601" className="font-semibold text-background hover:underline whitespace-nowrap">+91 99000 89601</a>
             </div>
             <div className="flex gap-4 pt-2">
               <a href="#" className="text-background/60 hover:text-background transition-colors">
@@ -141,7 +141,7 @@ export function Footer() {
                 <Phone className="h-5 w-5 mt-0.5" />
                 <div>
                   <p className="font-semibold text-background">Emergency Helpline</p>
-                  <p className="whitespace-nowrap">99000 89601</p>
+                  <a href="tel:+919900089601" className="hover:underline whitespace-nowrap text-background/70 hover:text-background">+91 99000 89601</a>
                 </div>
               </li>
               <li className="flex items-start gap-3">

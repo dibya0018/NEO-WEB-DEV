@@ -93,12 +93,23 @@ export function EmergencyServices() {
           transition={{ duration: 0.6 }}
           className="text-center max-w-2xl mx-auto mb-8 sm:mb-12 md:mb-16"
         >
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mt-4 mb-4 sm:mb-6 text-balance px-2">
-            <div className="flex flex-col">
-              <span className="gradient-text">Our services</span>
-              <span className="gradient-text">Is it an emergency?</span>
-            </div>
-          </h2>
+          <motion.span
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="inline-block text-sm font-semibold gradient-text uppercase tracking-wider px-4 py-1 rounded-full bg-[#65349E]/10 mb-4"
+          >
+            Our Process
+          </motion.span>
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="text-3xl md:text-4xl font-bold mt-4 mb-6 text-balance"
+          >
+            Our <span className="gradient-text">Emergency Services</span>
+          </motion.h2>
           <p className="text-muted-foreground text-base sm:text-lg px-4">
             From cardiac emergencies to trauma care, our specialized teams are ready 24x7 to provide life-saving
             treatment.
