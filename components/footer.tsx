@@ -10,7 +10,7 @@ export function Footer() {
           <div className="space-y-4">
             <Link href="/" className="flex items-center gap-2">
               <Image
-                src="/new_logo.png"
+                src="logo.png"
                 alt="NeoTrueNorth Hospitals Logo"
                 width={200}
                 height={50}
