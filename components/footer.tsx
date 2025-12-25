@@ -18,7 +18,7 @@ export function Footer() {
               />
             </Link>
             <p className="text-background/70 leading-relaxed">
-              Smart Emergency Care Hospitals. When every second counts, we respond.
+            	Emergency 1st Hospitals. When every second counts, we respond.
             </p>
             <div className="flex items-center gap-3 text-background/70">
               <Phone className="h-5 w-5" />
@@ -125,12 +125,18 @@ export function Footer() {
           <div>
             <h4 className="font-semibold text-lg mb-4">24x7 Emergency Services</h4>
             <ul className="space-y-3 text-background/70">
-              <li>Cardiac Emergency</li>
-              <li>Stroke Care</li>
-              <li>Trauma Care</li>
-              <li>Respiratory Emergency</li>
-              <li>Sepsis Treatment</li>
-              <li>Poisoning Treatment</li>
+              {[
+                { name: "General physician 24x7", href: "/Services#general-physician" },
+                { name: "Pharmacy 24x7", href: "/Services#pharmacy" },
+                { name: "Diagnostics 24x7", href: "/Services#diagnostics" },
+                { name: "Ambulance 24x7", href: "/Services#ambulance" }
+              ].map((service, index) => (
+                <li key={index}>
+                  <Link href={service.href} className="hover:underline hover:text-background">
+                    {service.name}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
