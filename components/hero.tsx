@@ -42,23 +42,24 @@ export function Hero() {
               transition={{ duration: 0.6, delay: 0.1 }}
               className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight text-balance px-2"
             >
-              <motion.span
-  initial={{ opacity: 0, y: -30 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{ duration: 0.6, delay: 0.2 }}
-  className="bg-gradient-to-r from-[#65349E] via-[#F04A89] to-[#65349E] bg-clip-text text-transparent inline-block mt-8 sm:mt-12 md:mt-20 lg:mt-24 xl:mt-0"
->
-  When Every Second...
-</motion.span>
-              <br />
-              <motion.span
-                initial={{ opacity: 0, y: -30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-                className="bg-gradient-to-r from-[#F04A89] via-[#65349E] to-[#F04A89] bg-clip-text text-transparent inline-block"
-              >
-                Counts, We Respond
-              </motion.span>
+              <motion.div className="flex flex-col items-center">
+                <motion.span
+                  initial={{ opacity: 0, y: -30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                  className="bg-gradient-to-r from-[#65349E] via-[#F04A89] to-[#65349E] bg-clip-text text-transparent whitespace-nowrap"
+                >
+                  When Every Second Counts,...
+                </motion.span>
+                <motion.span
+                  initial={{ opacity: 0, y: -15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.4 }}
+                  className="bg-gradient-to-r from-[#F04A89] via-[#65349E] to-[#F04A89] bg-clip-text text-transparent whitespace-nowrap"
+                >
+                  We Respond
+                </motion.span>
+              </motion.div>
             </motion.h1>
 
             <motion.p
@@ -70,7 +71,7 @@ export function Hero() {
               <span className="font-semibold">Care in 60 Seconds. Treatment in 60 Minutes.</span>
               <br className="hidden sm:block" />
               <span className="sm:hidden"> </span>
-              Smart Emergency Care Hospitals designed for speed, precision, and life-saving outcomes.
+              Emergency 1st Hospitals designed for speed, precision, and life-saving outcomes.
             </motion.p>
 
             <motion.div

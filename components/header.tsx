@@ -19,7 +19,6 @@ const navLinks: NavLink[] = [
    { href: "/Services", label: "24/7 Services" },
   { href: "/dad", label: "D.A.D" },
   {href: "/emergency-card",label: "Emergency Card"},
-  { href: "/about", label: "About" }
 ]
 
 export function Header() {
@@ -81,11 +80,11 @@ export function Header() {
           <div className="hidden lg:flex items-center gap-3">
             <Button 
               variant="outline" 
-              className="p-2 gradient-bg rounded-full border-0 hover:opacity-90 transition-all duration-200 h-10 w-10 text-white opacity-90 flex items-center justify-center" 
+              className="p-2 bg-white rounded-full border-0 hover:opacity-90 transition-all duration-200 h-10 w-10 flex items-center justify-center" 
               asChild
             >
               <a href="https://wa.me/919900089601" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
-                <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <svg className="h-5 w-5" fill="#25D366" viewBox="0 0 24 24" aria-hidden="true">
                   <path d="M17.498 14.382v-.002c-.301-.182-1.774-.872-2.05-.972-.276-.1-.476-.15-.677.15-.2.3-.77.974-.945 1.174-.174.198-.35.222-.646.075-.3-.15-1.263-.465-2.405-1.485-.888-.795-1.484-1.77-1.66-2.07-.174-.3-.02-.465.13-.615.136-.135.3-.345.45-.523.146-.181.194-.301.297-.496.1-.21.05-.375-.025-.524-.076-.15-.675-1.62-.93-2.206-.24-.555-.49-.465-.675-.473l-.57-.006a1.08 1.08 0 00-.78.36c-.27.3-.99.96-.99 2.34 0 1.38 1.006 2.72 1.15 2.91.14.195 1.98 3.165 4.8 4.31.66.27 1.17.42 1.56.54.66.18 1.26.15 1.74.09.51-.06 1.56-.63 1.77-1.23.21-.6.21-1.14.15-1.23-.05-.09-.21-.15-.45-.27"/>
                   <path d="M12 0C5.37 0 0 5.37 0 12c0 2.13.555 4.14 1.53 5.895L.15 24l6.255-1.68A11.94 11.94 0 0012 24c6.63 0 12-5.37 12-12 0-6.63-5.37-12-12-12m0 21.75c-2.13 0-4.14-.555-5.895-1.53l-4.2 1.125 1.14-4.11A10.2 10.2 0 011.5 12c0-5.79 4.71-10.5 10.5-10.5S22.5 6.21 22.5 12s-4.71 10.5-10.5 10.5"/>
                 </svg>
