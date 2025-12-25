@@ -167,7 +167,7 @@ export function Footer() {
 
         <div className="border-t border-background/20 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
            <p className="text-background/60 text-sm">
-           © {new Date().getFullYear()} Neo TrueNorth. All rights reserved | Developed by{' '}
+           © {new Date().getFullYear()} Neo TrueNorth hospitals Pvt ltd. All rights reserved | Developed by{' '}
            <a 
               href="https://www.bipminds.com/" 
               target="_blank" 
