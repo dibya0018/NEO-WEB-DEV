@@ -1,6 +1,8 @@
 import Link from "next/link"
 import { Phone, Mail, MapPin, Facebook, Twitter, Instagram, Linkedin } from "lucide-react"
 import Image from "next/image"
+import { PrivacyPolicyDialog } from "./privacy-policy-dialog"
+import { TermsOfServiceDialog } from "./terms-of-service-dialog"
 
 export function Footer() {
   return (
@@ -185,12 +187,8 @@ export function Footer() {
           .
           </p>
           <div className="flex gap-6 text-background/60 text-sm">
-            <a href="#" className="hover:text-background transition-colors">
-              Privacy Policy
-            </a>
-            <a href="#" className="hover:text-background transition-colors">
-              Terms of Service
-            </a>
+            <PrivacyPolicyDialog />
+            <TermsOfServiceDialog />
             <a href="#" className="hover:text-background transition-colors">
               Cookie Policy
             </a>
