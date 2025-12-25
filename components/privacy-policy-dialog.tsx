@@ -19,8 +19,8 @@ export function PrivacyPolicyDialog() {
   }
 
   return (
-    <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
-      <div className="bg-white rounded-lg max-w-3xl max-h-[80vh] w-full overflow-y-auto p-6 relative">
+    <div className="fixed inset-0 bg-black/10 backdrop-blur-sm flex items-center justify-center p-4 z-50">
+      <div className="bg-black/50 rounded-lg max-w-3xl max-h-[80vh] w-full overflow-y-auto p-6 relative scrollbar-hide [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
         <button 
           onClick={() => setIsOpen(false)}
           className="absolute right-4 top-4 text-gray-500 hover:text-gray-700"
@@ -28,13 +28,13 @@ export function PrivacyPolicyDialog() {
           <X size={24} />
         </button>
         
-        <h2 className="text-2xl font-bold mb-6">Privacy Policy</h2>
+        <h2 className="text-2xl font-bold mb-6 text-white">Privacy Policy</h2>
         
-        <div className="space-y-4 text-gray-700 text-sm">
+        <div className="space-y-4 text-white-700 text-sm">
           <p>Last updated: December 25, 2024</p>
           <p>At Neo TrueNorth Hospital, we are committed to protecting the privacy and security of everyone who interacts with our website, mobile application, physical centers, and healthcare services. This Privacy Policy explains how we collect, use, store, and safeguard information, and what rights you have over it.</p>
           
-          <h3 className="text-lg font-semibold mt-6">1️⃣ Information We Collect</h3>
+          <h3 className="text-lg font-semibold mt-6">1 Information We Collect</h3>
           <p>We may collect the following information when you use our services:</p>
           <ul className="list-disc pl-5 space-y-2">
             <li><strong>Personal Information:</strong> Full name, gender, date of birth, age, address, phone number, email</li>
@@ -44,7 +44,7 @@ export function PrivacyPolicyDialog() {
             <li><strong>Voluntary Inputs:</strong> Messages, forms, feedback, website chat interactions</li>
           </ul>
           
-          <h3 className="text-lg font-semibold mt-6">2️⃣ How We Use Your Information</h3>
+          <h3 className="text-lg font-semibold mt-6">2 How We Use Your Information</h3>
           <p>We use your data to:</p>
           <ul className="list-disc pl-5 space-y-2">
             <li>Provide consultations, medical care, treatment, and follow-up services</li>
@@ -56,10 +56,10 @@ export function PrivacyPolicyDialog() {
             <li>Comply with medical, legal, and government regulations</li>
           </ul>
           
-          <h3 className="text-lg font-semibold mt-6">3️⃣ Cookies & Tracking</h3>
+          <h3 className="text-lg font-semibold mt-6">3 Cookies & Tracking</h3>
           <p>Our website uses cookies and tracking tools to enhance user experience. You can disable cookies in browser settings, though some features may stop working.</p>
           
-          <h3 className="text-lg font-semibold mt-6">4️⃣ Information Sharing</h3>
+          <h3 className="text-lg font-semibold mt-6">4 Information Sharing</h3>
           <p>We do <strong>NOT</strong> sell your personal data.</p>
           <p>We may share limited information with:</p>
           <ul className="list-disc pl-5 space-y-2">
@@ -69,10 +69,10 @@ export function PrivacyPolicyDialog() {
             <li>Third-party service providers strictly for operational functionality</li>
           </ul>
           
-          <h3 className="text-lg font-semibold mt-6">5️⃣ Data Security</h3>
+          <h3 className="text-lg font-semibold mt-6">5 Data Security</h3>
           <p>We use encryption, secure servers, access-control, and compliance-grade data systems to keep your information safe. While we do our best to protect your data, no online transmission is 100% foolproof.</p>
           
-          <h3 className="text-lg font-semibold mt-6">6️⃣ Your Rights</h3>
+          <h3 className="text-lg font-semibold mt-6">6 Your Rights</h3>
           <p>You may request:</p>
           <ul className="list-disc pl-5 space-y-2">
             <li>Access to your medical records</li>
@@ -81,7 +81,7 @@ export function PrivacyPolicyDialog() {
           </ul>
           <p>To contact us regarding data rights, email: <a href="mailto:contact@neotruenorthhospitals.com" className="text-blue-600 hover:underline">contact@neotruenorthhospitals.com</a></p>
           
-          <h3 className="text-lg font-semibold mt-6">7️⃣ Changes to This Policy</h3>
+          <h3 className="text-lg font-semibold mt-6">7 Changes to This Policy</h3>
           <p>We may update this privacy policy at any time. Continued use of our platform means you accept our updated terms.</p>
           
           <div className="mt-8">

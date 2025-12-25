@@ -3,28 +3,21 @@
 import { motion } from "framer-motion"
 import { Card, CardContent } from "@/components/ui/card"
 import { ChevronLeft, ChevronRight } from "lucide-react"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 const youtubeVideos = [
-  {
-    id: 'n6oNUdF3_GA',
-    url: 'https://youtube.com/shorts/n6oNUdF3_GA?si=1UNBL5tpwga8ZwEO'
-  },
-  {
-    id: 'XTL5kKnKJ3Y',
-    url: 'https://youtube.com/shorts/XTL5kKnKJ3Y?si=WPEBLCvqxumVw8sn'
-  },
   {
     id: 'GRR3VlU_WZ8',
     url: 'https://youtube.com/shorts/GRR3VlU_WZ8?si=vrLhBqDZYahR16CC'
   },
   {
-    id: 'S_hqWuuMFeg',
-    url: 'https://youtube.com/shorts/S_hqWuuMFeg?si=cbU_ZWzympJE5i4_'
+    id: 'XTL5kKnKJ3Y',
+    url: 'https://youtube.com/shorts/XTL5kKnKJ3Y?si=WPEBLCvqxumVw8sn'
   },
+
   {
     id: 'S_hqWuuMFeg',
-    url: 'https://youtube.com/shorts/S_hqWuuMFeg?si=xIYV7lUTUiR08OGl'
+    url: 'https://youtube.com/shorts/S_hqWuuMFeg?si=cbU_ZWzympJE5i4_'
   }
 ]
 
@@ -51,7 +44,18 @@ const itemVariants = {
 
 export function Testimonials() {
   const [currentIndex, setCurrentIndex] = useState(0)
-  const itemsPerPage = 3
+  const [itemsPerPage, setItemsPerPage] = useState(1)
+
+  useEffect(() => {
+    const updateItemsPerPage = () => {
+      setItemsPerPage(window.innerWidth >= 768 ? 3 : 1)
+    }
+    
+    updateItemsPerPage()
+    window.addEventListener('resize', updateItemsPerPage)
+    
+    return () => window.removeEventListener('resize', updateItemsPerPage)
+  }, [])
 
   const next = () => {
     if (currentIndex < youtubeVideos.length - itemsPerPage) {
@@ -78,13 +82,13 @@ export function Testimonials() {
           className="text-center mb-12"
         >
           <motion.span
-            className="inline-block text-sm font-semibold text-primary mb-4"
+            className="inline-block text-sm font-semibold mb-4 bg-gradient-to-r from-[#65349E] to-[#F04A89] bg-clip-text text-transparent"
             initial={{ opacity: 0, y: -10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            Patient Testimonials
+            PATIENT TESTIMONIALS
           </motion.span>
           <motion.h2
             className="text-3xl md:text-4xl font-bold mb-4"
@@ -113,10 +117,45 @@ export function Testimonials() {
           viewport={{ once: true }}
           className="relative"
         >
-          <div className="relative overflow-hidden">
+          {/* Mobile: Horizontal Scroll */}
+          <div className="md:hidden overflow-x-auto pb-6 scrollbar-hide [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] snap-x snap-mandatory">
+            <div className="flex gap-4 px-4">
+              {youtubeVideos.map((video, index) => {
+                const videoId = video.url.includes('youtube.com/shorts/') 
+                  ? video.url.split('youtube.com/shorts/')[1].split('?')[0]
+                  : video.url.split('v=')[1].split('&')[0];
+                
+                return (
+                  <motion.div 
+                    key={`${videoId}-${index}`}
+                    variants={itemVariants}
+                    className="flex-[0_0_90%] sm:flex-[0_0_85%] min-w-0 snap-center"
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.3, delay: index * 0.1 }}
+                  >
+                    <div className="relative w-full aspect-[9/16] rounded-2xl overflow-hidden shadow-2xl border-2 border-white/20 bg-black">
+                      <iframe
+                        src={`https://www.youtube.com/embed/${videoId}?autoplay=0&mute=1&controls=1`}
+                        title={`Testimonial Video ${index + 1}`}
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowFullScreen
+                        className="absolute inset-0 w-full h-full rounded-2xl"
+                        loading="lazy"
+                        frameBorder="0"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none rounded-2xl" />
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Desktop: Card View with Navigation */}
+          <div className="hidden md:block relative overflow-hidden">
             <div className="flex gap-6">
               {visibleVideos.map((video, index) => {
-                // Extract video ID from URL for proper embedding
                 const videoId = video.url.includes('youtube.com/shorts/') 
                   ? video.url.split('youtube.com/shorts/')[1].split('?')[0]
                   : video.url.split('v=')[1].split('&')[0];

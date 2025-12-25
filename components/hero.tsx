@@ -40,14 +40,14 @@ export function Hero() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight text-balance px-2"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight text-balance px-2 sm:px-4"
             >
               <motion.div className="flex flex-col items-center">
                 <motion.span
                   initial={{ opacity: 0, y: -30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.2 }}
-                  className="bg-gradient-to-r from-[#65349E] via-[#F04A89] to-[#65349E] bg-clip-text text-transparent whitespace-nowrap"
+                  className="bg-gradient-to-r from-[#65349E] via-[#F04A89] to-[#65349E] bg-clip-text text-transparent text-center sm:whitespace-nowrap"
                 >
                   When Every Second Counts,...
                 </motion.span>
@@ -55,7 +55,7 @@ export function Hero() {
                   initial={{ opacity: 0, y: -15 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.4 }}
-                  className="bg-gradient-to-r from-[#F04A89] via-[#65349E] to-[#F04A89] bg-clip-text text-transparent whitespace-nowrap"
+                  className="bg-gradient-to-r from-[#F04A89] via-[#65349E] to-[#F04A89] bg-clip-text text-transparent text-center sm:whitespace-nowrap"
                 >
                   We Respond
                 </motion.span>

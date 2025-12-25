@@ -19,8 +19,8 @@ export function TermsOfServiceDialog() {
   }
 
   return (
-    <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
-      <div className="bg-white rounded-lg max-w-3xl max-h-[80vh] w-full overflow-y-auto p-6 relative">
+    <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50">
+      <div className="bg-black/10 rounded-lg max-w-3xl max-h-[80vh] w-full overflow-y-auto p-6 relative scrollbar-hide [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
         <button 
           onClick={() => setIsOpen(false)}
           className="absolute right-4 top-4 text-gray-500 hover:text-gray-700"
@@ -28,9 +28,9 @@ export function TermsOfServiceDialog() {
           <X size={24} />
         </button>
         
-        <h2 className="text-2xl font-bold mb-6">Terms of Service</h2>
+        <h2 className="text-2xl font-bold mb-6 text-white">Terms of Service</h2>
         
-        <div className="space-y-4 text-gray-700 text-sm">
+        <div className="space-y-4 text-white-700 text-sm">
           <p>Last updated: December 25, 2024</p>
           
           <p>Welcome to Neo TrueNorth Hospital. These Terms of Service outline the rules and regulations for the use of our services.</p>
