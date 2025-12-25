@@ -173,7 +173,7 @@ export function Footer() {
 
         </div>
 
-        <div className="border-t border-background/20 mt-12 pt-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+        <div className="border-t border-background/20 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-background/60 text-[10px] sm:text-xs md:text-sm text-center md:text-left flex-1 leading-tight">
             © {new Date().getFullYear()} Neo TrueNorth hospitals Pvt ltd. All rights reserved | Developed by{' '}
             <a
@@ -186,7 +186,7 @@ export function Footer() {
             </a>
             .
           </p>
-          <div className="flex flex-wrap gap-4 md:gap-6 text-background/60 text-sm justify-center md:justify-end items-center">
+          <div className="flex flex-wrap gap-4 md:gap-6 text-background/60 text-sm justify-center items-center w-full md:w-auto">
             <PrivacyPolicyDialog />
             <TermsOfServiceDialog />
             <a href="#" className="hover:text-background transition-colors">
