@@ -111,7 +111,7 @@ export function Footer() {
               </li>
               <li>
                 <Link href="/founder" className="hover:text-background transition-colors">
-                  Founder Message
+                  Ceo Message
                 </Link>
               </li>
               <li>
@@ -123,7 +123,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="font-semibold text-lg mb-4">Emergency Services</h4>
+            <h4 className="font-semibold text-lg mb-4">24x7 Emergency Services</h4>
             <ul className="space-y-3 text-background/70">
               <li>Cardiac Emergency</li>
               <li>Stroke Care</li>
@@ -147,7 +147,9 @@ export function Footer() {
               <li className="flex items-start gap-3">
                 <Mail className="h-5 w-5 mt-0.5" />
                 <div>
-                  <p>info@neotruenorth.com</p>
+                  <a href="mailto:contact@neotruenorthhospitals.com" className="hover:underline hover:text-background">
+                    contact@neotruenorthhospitals.com
+                  </a>
                 </div>
               </li>
               <li className="flex items-start gap-3">

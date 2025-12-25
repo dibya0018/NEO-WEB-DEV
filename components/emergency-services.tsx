@@ -99,7 +99,7 @@ export function EmergencyServices() {
             viewport={{ once: true }}
             className="inline-block text-sm font-semibold gradient-text uppercase tracking-wider px-4 py-1 rounded-full bg-[#65349E]/10 mb-4"
           >
-            Our Process
+            Our services
           </motion.span>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -108,11 +108,10 @@ export function EmergencyServices() {
             transition={{ delay: 0.1 }}
             className="text-3xl md:text-4xl font-bold mt-4 mb-6 text-balance"
           >
-            Our <span className="gradient-text">Emergency Services</span>
+            Is <span className="gradient-text">it an Emergency!</span>
           </motion.h2>
           <p className="text-muted-foreground text-base sm:text-lg px-4">
-            From cardiac emergencies to trauma care, our specialized teams are ready 24x7 to provide life-saving
-            treatment.
+          	From chest pain to accidents, our specialized teams are ready 24 x 7 to provide life saving treatment
           </p>
         </motion.div>
 
