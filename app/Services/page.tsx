@@ -230,7 +230,7 @@ function WhyChooseUs() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="text-4xl font-bold mb-4">24/7 Services</h2>
+          <h2 className="text-4xl font-bold mb-4">24×7 Services</h2>
           <div className="w-24 h-1 bg-gradient-to-r from-[#65349E] to-[#F04A89] mx-auto"></div>
         </motion.div>
        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mx-auto justify-items-center">
