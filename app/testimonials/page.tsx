@@ -1,26 +1,33 @@
-'use client'
+"use client"
 
-import { Header } from '@/components/header'
-import { Footer } from '@/components/footer'
-import { EmergencyCTA } from '@/components/emergency-cta'
-import { motion } from 'framer-motion'
+import { Header } from "@/components/header"
+import { Footer } from "@/components/footer"
+import { EmergencyCTA } from "@/components/emergency-cta"
+import { motion } from "framer-motion"
+import { useEffect, useState } from "react"
 
-const youtubeVideos = [
-  {
-    id: 'n6oNUdF3_GA',
-    url: 'https://youtube.com/shorts/n6oNUdF3_GA?si=1UNBL5tpwga8ZwEO'
-  },
-  {
-    id: 'XTL5kKnKJ3Y',
-    url: 'https://youtube.com/shorts/XTL5kKnKJ3Y?si=WPEBLCvqxumVw8sn'
-  },
-  {
-    id: 'GRR3VlU_WZ8',
-    url: 'https://youtube.com/shorts/GRR3VlU_WZ8?si=vrLhBqDZYahR16CC'
-  }
-]
+type Testimonial = {
+  id: number
+  youtube_id: string
+  url: string
+}
 
 export default function TestimonialsPage() {
+  const [testimonials, setTestimonials] = useState<Testimonial[]>([])
+
+  useEffect(() => {
+    async function loadTestimonials() {
+      try {
+        const res = await fetch("/api/testimonials")
+        if (!res.ok) return
+        const data = await res.json()
+        setTestimonials(data.testimonials ?? [])
+      } catch {
+        // ignore
+      }
+    }
+    void loadTestimonials()
+  }, [])
   return (
     <main className="min-h-screen bg-white overflow-x-hidden">
       <Header />
@@ -29,7 +36,12 @@ export default function TestimonialsPage() {
       <section className="py-12 sm:py-16 md:py-20 lg:py-24">
         <div className="container mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {youtubeVideos.map((video, index) => (
+            {testimonials.length === 0 && (
+              <p className="text-gray-500 col-span-full">
+                No testimonials available yet.
+              </p>
+            )}
+            {testimonials.map((video, index) => (
               <motion.div
                 key={video.id}
                 initial={{ opacity: 0, y: 30 }}
@@ -40,7 +52,7 @@ export default function TestimonialsPage() {
               >
                 <div className="relative w-full aspect-[9/16] rounded-2xl overflow-hidden shadow-xl bg-black">
                   <iframe
-                    src={`https://www.youtube.com/embed/${video.id}`}
+                    src={`https://www.youtube.com/embed/${video.youtube_id}`}
                     title={`Testimonial Video ${index + 1}`}
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     allowFullScreen

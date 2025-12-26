@@ -6,8 +6,8 @@ import Script from "next/script"
 export function ConditionalChatbot() {
   const pathname = usePathname()
   
-  // Don't load chatbot on Appointment page (iframe already has one)
-  if (pathname === "/Appointment" || pathname === "/appointment-embed") {
+  // Don't load chatbot on Appointment page (iframe already has one) or admin page
+  if (pathname === "/Appointment" || pathname === "/appointment-embed" || pathname === "/admin") {
     return null
   }
 

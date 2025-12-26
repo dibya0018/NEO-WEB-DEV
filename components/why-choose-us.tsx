@@ -67,7 +67,7 @@ export function WhyChooseUs() {
       </div>
       <div className="container mx-auto px-4 relative">
         <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-12 md:mb-16">
-          <span className="text-base md:text-lg font-bold gradient-text uppercase tracking-wider">Why Neo TrueNorth</span>
+          <span className="text-base md:text-lg font-bold gradient-text uppercase tracking-wider">Why Neo TrueNorth Hospitals</span>
           <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 text-balance">
             Built for <span className="gradient-text">Emergency Excellence</span>
           </h2>

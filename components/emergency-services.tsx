@@ -108,7 +108,7 @@ export function EmergencyServices() {
             transition={{ delay: 0.1 }}
             className="text-3xl md:text-4xl font-bold mt-4 mb-6 text-balance"
           >
-            Is <span className="gradient-text">it an Emergency!</span>
+            Is <span className="gradient-text">it a Medical Emergency?</span>
           </motion.h2>
           <p className="text-muted-foreground text-base sm:text-lg px-4">
           	From chest pain to accidents, our specialized teams are ready 24 x 7 to provide life saving treatment

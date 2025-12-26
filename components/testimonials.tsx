@@ -5,21 +5,11 @@ import { Card, CardContent } from "@/components/ui/card"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import { useState, useEffect } from "react"
 
-const youtubeVideos = [
-  {
-    id: 'GRR3VlU_WZ8',
-    url: 'https://youtube.com/shorts/GRR3VlU_WZ8?si=vrLhBqDZYahR16CC'
-  },
-  {
-    id: 'XTL5kKnKJ3Y',
-    url: 'https://youtube.com/shorts/XTL5kKnKJ3Y?si=WPEBLCvqxumVw8sn'
-  },
-
-  {
-    id: 'S_hqWuuMFeg',
-    url: 'https://youtube.com/shorts/S_hqWuuMFeg?si=cbU_ZWzympJE5i4_'
-  }
-]
+type Testimonial = {
+  id: number
+  youtube_id: string
+  url: string
+}
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -45,31 +35,50 @@ const itemVariants = {
 export function Testimonials() {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [itemsPerPage, setItemsPerPage] = useState(1)
+  const [testimonials, setTestimonials] = useState<Testimonial[]>([])
 
   useEffect(() => {
     const updateItemsPerPage = () => {
       setItemsPerPage(window.innerWidth >= 768 ? 3 : 1)
     }
-    
+
     updateItemsPerPage()
-    window.addEventListener('resize', updateItemsPerPage)
-    
-    return () => window.removeEventListener('resize', updateItemsPerPage)
+    window.addEventListener("resize", updateItemsPerPage)
+
+    return () => window.removeEventListener("resize", updateItemsPerPage)
+  }, [])
+
+  useEffect(() => {
+    async function loadTestimonials() {
+      try {
+        const res = await fetch("/api/testimonials")
+        if (!res.ok) return
+        const data = await res.json()
+        setTestimonials(data.testimonials ?? [])
+        setCurrentIndex(0)
+      } catch {
+        // ignore
+      }
+    }
+    void loadTestimonials()
   }, [])
 
   const next = () => {
-    if (currentIndex < youtubeVideos.length - itemsPerPage) {
-      setCurrentIndex(prev => prev + 1)
+    if (currentIndex < testimonials.length - itemsPerPage) {
+      setCurrentIndex((prev) => prev + 1)
     }
   }
 
   const prev = () => {
     if (currentIndex > 0) {
-      setCurrentIndex(prev => prev - 1)
+      setCurrentIndex((prev) => prev - 1)
     }
   }
 
-  const visibleVideos = youtubeVideos.slice(currentIndex, currentIndex + itemsPerPage)
+  const visibleVideos = testimonials.slice(
+    currentIndex,
+    currentIndex + itemsPerPage
+  )
 
   return (
     <section className="py-16 md:py-24 lg:py-32 bg-gradient-to-b from-[#F9F5FF] to-white">
@@ -120,13 +129,10 @@ export function Testimonials() {
           {/* Mobile: Horizontal Scroll */}
           <div className="md:hidden overflow-x-auto pb-6 scrollbar-hide [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] snap-x snap-mandatory">
             <div className="flex gap-4 px-4">
-              {youtubeVideos.map((video, index) => {
-                const videoId = video.url.includes('youtube.com/shorts/') 
-                  ? video.url.split('youtube.com/shorts/')[1].split('?')[0]
-                  : video.url.split('v=')[1].split('&')[0];
-                
+              {testimonials.map((video, index) => {
+                const videoId = video.youtube_id
                 return (
-                  <motion.div 
+                  <motion.div
                     key={`${videoId}-${index}`}
                     variants={itemVariants}
                     className="flex-[0_0_90%] sm:flex-[0_0_85%] min-w-0 snap-center"
@@ -156,12 +162,9 @@ export function Testimonials() {
           <div className="hidden md:block relative overflow-hidden">
             <div className="flex gap-6">
               {visibleVideos.map((video, index) => {
-                const videoId = video.url.includes('youtube.com/shorts/') 
-                  ? video.url.split('youtube.com/shorts/')[1].split('?')[0]
-                  : video.url.split('v=')[1].split('&')[0];
-                
+                const videoId = video.youtube_id
                 return (
-                  <motion.div 
+                  <motion.div
                     key={`${videoId}-${index}-${currentIndex}`}
                     variants={itemVariants}
                     className="flex-[0_0_calc(33.333%-1rem)] min-w-0"
@@ -201,7 +204,7 @@ export function Testimonials() {
             
             <button 
               onClick={next}
-              disabled={currentIndex >= youtubeVideos.length - itemsPerPage}
+              disabled={currentIndex >= testimonials.length - itemsPerPage}
               className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-white/80 hover:bg-white text-gray-900 rounded-full p-2 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed z-10"
               aria-label="Next slide"
             >

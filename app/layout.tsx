@@ -4,6 +4,7 @@ import { Inter } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import { ConditionalChatbot } from "@/components/conditional-chatbot"
 import "./globals.css"
+import { VisitorTracker } from "@/components/visitor-tracker"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -25,6 +26,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="overflow-x-hidden">
       <body className={`font-sans antialiased h-screen w-full overflow-x-hidden`}>
+        <VisitorTracker />
         <ConditionalChatbot />
         {children}
         <Analytics />

@@ -3,96 +3,32 @@
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import Image from "next/image"
-import { useRef, useEffect } from "react"
+import { useRef, useEffect, useState } from "react"
 
 type Doctor = {
-  name: string;
-  specialty: string;
-  image: string;
+  id: number
+  name: string
+  specialty: string
+  image_path: string
 }
-
-const doctors: Doctor[] = [
-  {
-    name: "Dr. Raghvendra Reddy",
-    specialty: "General Surgery",
-    image: "/placeholder-doctor.jpg"
-  },
-  {
-    name: "Dr. Neethu Josh",
-    specialty: "General Medicine",
-    image: "/placeholder-doctor.jpg"
-  },
-  {
-    name: "Dr. Anila Sara",
-    specialty: "Dermatology",
-    image: "/placeholder-doctor.jpg"
-  },
-  {
-    name: "Dr. Narasimhaiah",
-    specialty: "Urology",
-    image: "/placeholder-doctor.jpg"
-  },
-  {
-    name: "Dr. Suparna Ganguly",
-    specialty: "OBG",
-    image: "/placeholder-doctor.jpg"
-  },
-  {
-    name: "Dr. Parul",
-    specialty: "Dentistry",
-    image: "/placeholder-doctor.jpg"
-  },
-  {
-    name: "Dr. Arun",
-    specialty: "Cardiology",
-    image: "/placeholder-doctor.jpg"
-  },
-  {
-    name: "Dr. Salma",
-    specialty: "Paediatrics",
-    image: "/placeholder-doctor.jpg"
-  },
-  {
-    name: "Dr. Bhavyasree R",
-    specialty: "Psychiatry",
-    image: "/placeholder-doctor.jpg"
-  },
-  {
-    name: "Dr. Mahesh Meda",
-    specialty: "ENT",
-    image: "/placeholder-doctor.jpg"
-  },
-  {
-    name: "Dr. Lekha",
-    specialty: "ENT (On Call)",
-    image: "/placeholder-doctor.jpg"
-  },
-  {
-    name: "Ophthalmology",
-    specialty: "On Call",
-    image: "/placeholder-doctor.jpg"
-  },
-  {
-    name: "Emergency Medicine",
-    specialty: "On Call",
-    image: "/placeholder-doctor.jpg"
-  },
-  {
-    name: "Plastic Surgery",
-    specialty: "On Call",
-    image: "/placeholder-doctor.jpg"
-  },
-  {
-    name: "Neurology",
-    specialty: "On Call",
-    image: "/placeholder-doctor.jpg"
-  }
-];
-
-// ... (previous imports and doctors array remain the same)
 
 export default function DoctorPage() {
   const containerRef = useRef<HTMLDivElement>(null)
+  const [doctors, setDoctors] = useState<Doctor[]>([])
+
+  useEffect(() => {
+    async function loadDoctors() {
+      try {
+        const res = await fetch("/api/doctors")
+        if (!res.ok) return
+        const data = await res.json()
+        setDoctors(data.doctors ?? [])
+      } catch {
+        // ignore
+      }
+    }
+    void loadDoctors()
+  }, [])
 
   const scroll = (direction: 'left' | 'right') => {
     if (containerRef.current) {
@@ -135,15 +71,21 @@ export default function DoctorPage() {
                 scrollbarWidth: 'none'
               }}
             >
-              {doctors.map((doctor, index) => (
+              {doctors.length === 0 && (
+                <p className="text-gray-500">
+                  No doctors added yet. Please add doctors from the admin
+                  panel.
+                </p>
+              )}
+              {doctors.map((doctor) => (
                 <div 
-                  key={index}
+                  key={doctor.id}
                   className="flex-shrink-0 w-72 bg-white rounded-xl shadow-lg overflow-hidden snap-center transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 hover:ring-2 hover:ring-blue-400"
                 >
                   <div className="h-72 bg-gradient-to-br from-blue-50 to-blue-100 relative group-hover:from-blue-100 group-hover:to-blue-200 transition-all duration-300">
                     <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent z-10"></div>
                     <Image
-                      src={doctor.image}
+                      src={doctor.image_path}
                       alt={doctor.name}
                       layout="fill"
                       objectFit="cover"

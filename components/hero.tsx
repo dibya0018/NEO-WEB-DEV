@@ -49,7 +49,7 @@ export function Hero() {
                   transition={{ duration: 0.6, delay: 0.2 }}
                   className="bg-gradient-to-r from-[#65349E] via-[#F04A89] to-[#65349E] bg-clip-text text-transparent text-center sm:whitespace-nowrap"
                 >
-                  When Every Second Counts,...
+                  When Every Second Counts...
                 </motion.span>
                 <motion.span
                   initial={{ opacity: 0, y: -15 }}
@@ -71,7 +71,7 @@ export function Hero() {
               <span className="font-semibold">Care in 60 Seconds. Treatment in 60 Minutes.</span>
               <br className="hidden sm:block" />
               <span className="sm:hidden"> </span>
-              Emergency 1st Hospitals designed for speed, precision, and life-saving outcomes.
+              Emergency 1st Hospital designed for speed, precision, and life-saving outcomes.
             </motion.p>
 
             <motion.div

@@ -3,6 +3,7 @@ import { Phone, Mail, MapPin, Facebook, Twitter, Instagram, Linkedin } from "luc
 import Image from "next/image"
 import { PrivacyPolicyDialog } from "./privacy-policy-dialog"
 import { TermsOfServiceDialog } from "./terms-of-service-dialog"
+import { CookiePolicyDialog } from "./cookie-policy-dialog"
 
 export function Footer() {
   return (
@@ -20,7 +21,7 @@ export function Footer() {
               />
             </Link>
             <p className="text-background/70 leading-relaxed">
-              Emergency 1st Hospitals. When every second counts, we respond.
+              Emergency 1st Hospital. When every second counts, we respond.
             </p>
             {/* <div className="flex items-center gap-3 text-background/70">
               <Phone className="h-5 w-5 flex-shrink-0" />
@@ -97,7 +98,7 @@ export function Footer() {
               </li>
               <li>
                 <Link href="/founder" className="hover:text-background transition-colors">
-                  CEO Message
+                  CEOs Message
                 </Link>
               </li>
               <li>
@@ -112,10 +113,10 @@ export function Footer() {
             <h4 className="font-semibold text-lg mb-4">24x7 Emergency Services</h4>
             <ul className="space-y-3 text-background/70 flex-1">
               {[
-                { name: "General physician 24x7", href: "/Services#general-physician" },
-                { name: "Pharmacy 24x7", href: "/Services#pharmacy" },
-                { name: "Diagnostics 24x7", href: "/Services#diagnostics" },
-                { name: "Ambulance 24x7", href: "/Services#ambulance" }
+                { name: "General physician 24x7", href: "/Appointment" },
+                { name: "Pharmacy 24x7", href: "tel:+919900089601" },
+                { name: "Diagnostics 24x7", href: "tel:+919900089601" },
+                { name: "Ambulance 24x7", href: "tel:+919900089601" }
               ].map((service, index) => (
                 <li key={index}>
                   <Link href={service.href} className="hover:underline hover:text-background">
@@ -157,16 +158,16 @@ export function Footer() {
             </ul>
           </div>
           <div className="flex gap-4 pt-2 justify-center sm:justify-start">
-              <a href="#" className="text-background/60 hover:text-background transition-colors" aria-label="Facebook">
+              <a href="https://www.facebook.com/share/1G7MToHryD/?mibextid=wwXIfr" className="text-background/60 hover:text-background transition-colors" aria-label="Facebook">
                 <Facebook className="h-5 w-5" />
-              </a>
+              {/* </a>
               <a href="#" className="text-background/60 hover:text-background transition-colors" aria-label="Twitter">
-                <Twitter className="h-5 w-5" />
+                <Twitter className="h-5 w-5" /> */}
               </a>
-              <a href="#" className="text-background/60 hover:text-background transition-colors" aria-label="Instagram">
+              <a href="https://www.instagram.com/neotruenorth_hospitals?igsh=dDJkczczcG93Mnh5" className="text-background/60 hover:text-background transition-colors" aria-label="Instagram">
                 <Instagram className="h-5 w-5" />
               </a>
-              <a href="#" className="text-background/60 hover:text-background transition-colors" aria-label="LinkedIn">
+              <a href="https://www.linkedin.com/company/neo-truenorth-hospital/" className="text-background/60 hover:text-background transition-colors" aria-label="LinkedIn">
                 <Linkedin className="h-5 w-5" />
               </a>
             </div>
@@ -189,9 +190,7 @@ export function Footer() {
           <div className="flex flex-wrap gap-4 md:gap-6 text-background/60 text-sm justify-center items-center w-full md:w-auto">
             <PrivacyPolicyDialog />
             <TermsOfServiceDialog />
-            <a href="#" className="hover:text-background transition-colors">
-              Cookie Policy
-            </a>
+            <CookiePolicyDialog />
           </div>
         </div>
       </div>
