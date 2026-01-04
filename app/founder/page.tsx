@@ -1,6 +1,5 @@
 "use client"
 
-import { Instagram, Linkedin, Quote, Phone, ArrowRight, Heart, Clock, Shield, Twitter } from "lucide-react"
 import Link from "next/link"
 import { motion } from "framer-motion"
 import { Header } from "@/components/header"
@@ -8,6 +7,7 @@ import { Footer } from "@/components/footer"
 import { EmergencyCTA } from "@/components/emergency-cta"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
+import { Quote, Phone, ArrowRight, Heart, Clock, Shield, Linkedin, Twitter } from "lucide-react"
 
 export default function FounderPage() {
   return (
@@ -96,44 +96,21 @@ export default function FounderPage() {
 
                         <div className="flex justify-center gap-4 pt-2">
                           <a 
-  href="https://www.instagram.com/drrameshkarmegam/?igsh=ZW9zamxwYTlpbW85&utm_source=qr#" 
-  className="text-muted-foreground hover:text-[#E1306C] transition-colors"
-  target="_blank"
-  rel="noopener noreferrer"
-  aria-label="Instagram"
->
-  <Instagram className="h-5 w-5" />
-</a>
+                            href="https://www.linkedin.com/in/rameshkarmegam?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" 
+                            className="text-muted-foreground hover:text-[#65349E] transition-colors"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="LinkedIn"
+                          >
+                            <Linkedin className="h-5 w-5" />
+                          </a>
                           <a 
-  href="https://x.com/Ramesh_Karmegam" 
-  className="text-muted-foreground hover:text-black transition-colors"
-  target="_blank"
-  rel="noopener noreferrer"
-  aria-label="X (formerly Twitter)"
->
-  <svg 
-    className="h-5 w-5" 
-    viewBox="0 0 24 24" 
-    fill="currentColor"
-  >
-    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-  </svg>
-</a>
-<a 
-  href="https://www.facebook.com/profile.php?id=61586082509305" 
-  className="text-muted-foreground hover:text-[#1877F2] transition-colors"
-  target="_blank"
-  rel="noopener noreferrer"
-  aria-label="Facebook"
->
-  <svg 
-    className="h-5 w-5" 
-    viewBox="0 0 24 24" 
-    fill="currentColor"
-  >
-    <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" />
-  </svg>
-</a>
+                            href="#" 
+                            className="text-muted-foreground hover:text-[#65349E] transition-colors"
+                            aria-label="Twitter"
+                          >
+                            <Twitter className="h-5 w-5" />
+                          </a>
                         </div>
                       </div>
                     </CardContent>
@@ -144,62 +121,66 @@ export default function FounderPage() {
                   <Quote className="h-8 w-8 text-white" />
                 </div>
 
-              <div className="space-y-6 text-muted-foreground leading-relaxed">
-  <p>
-    I began my career like most doctors — long duty hours, a stethoscope, and a deep desire to serve.
-  </p>
+               <div className="space-y-6 text-muted-foreground leading-relaxed">
+              <p>
+               I began my career like most doctors with long duty hours, a stethoscope, and a desire to serve.
+               But early on, I saw a painful truth:
+               <span className="font-semibold text-foreground">
+               {" "}emergencies don’t fail because of doctors, they fail because of broken systems.
+               </span>
+               </p>
 
-  <p>
-    Early on, I realised a hard truth: emergencies don't fail because of doctors; they fail because of broken systems. The absence of triage, standardisation, coordination, and timely access costs lives.
-  </p>
+              <p>
+               No triage. No standardisation. No helpline. No coordination.
+               <br />
+               <span className="font-semibold text-foreground">Lives were being lost in the gaps.</span>
+               </p>
 
-  <p>
-    This insight led me to found <span className="font-semibold text-foreground">WhiteCross Clinic</span>, where we pioneered Smart Emergency Care Clinics. But even the best clinic could only solve part of the problem. India didn't just need better hospitals — it needed a true emergency care ecosystem.
-  </p>
+              <p>
+               This reality led me to found <span className="font-semibold text-foreground">WhiteCross Clinic</span>,
+               where we pioneered Smart Emergency Care Clinics. But even the best clinic could only solve part of
+               the problem India lacked a true Emergency Care ecosystem.
+               </p>
 
-  <p>
-    Becoming a father made this deeply personal. In moments of crisis, families need more than treatment. They need speed, clarity, reassurance and freedom from financial hesitation.
-  </p>
+              <p>
+               Becoming a father changed everything. Every emergency became personal. I realised that families
+               needed more than treatment
+               <span className="font-semibold text-foreground"> they needed speed, clarity, and hope.</span>
+               </p>
 
-  <p>
-    This purpose shaped <span className="font-semibold text-foreground">Neo TrueNorth Hospitals</span>, an Emergency 1st Hospital built around what patients truly need during medical emergencies: Speed, Accuracy, defined clinical outcomes — delivered with ethics and warmth.
-  </p>
+              <p>
+               This purpose shaped <span className="font-semibold text-foreground">NeoTru Hospitals</span> a chain
+               of Smart Emergency Care Hospitals designed to be fast, accurate, outcome-driven, ethical, and
+               friendly.
+               </p>
 
-  <p>
-    To make emergency care truly accessible, we built:
-  </p>
-  
-  <ul className="list-disc pl-6 space-y-2">
-    <li>
-      <span className="font-semibold text-foreground">D.A.D (Dial A Doctor):</span> a 24×7 triage helpline connecting patients to a qualified doctor within 60 seconds, and initiating treatment within 60 minutes
-    </li>
-    <li>
-      <span className="font-semibold text-foreground">NeoTru Emergency Access Card:</span> built on a simple belief — Care First. Pay Later. So that financial processes never delay life-saving decisions
-    </li>
-  </ul>
+              <p className="font-semibold text-foreground">
+               Our mission: 100 Smart Emergency Care Hospitals by 2035.
+               </p>
 
-  <p className="font-semibold text-foreground">
-    Our mission is bold: to build 100 Emergency 1st Hospitals by 2035.
-  </p>
+              <p>
+               We created <span className="font-semibold text-foreground">D.A.D (Dial A Doctor)</span>a 24x7 triage
+               helpline connecting patients to a doctor within 60 seconds and initiating treatment within
+               60 minutes.
+               </p>
 
-  <p>
-    NeoTru is more than an organisation.
-    <br />
-    It is a promise — to every family that deserves a fighting chance when seconds matter.
-  </p>
+              <p>
+               NeoTru is more than an organisation it is a promise to every family that deserves a fighting
+               chance.
+              </p>
 
-  <p className="text-foreground font-semibold">
-    As a Doctor, I serve.
-    <br />
-    As a Father, I empathise.
-    <br />
-    As an Entrepreneur, I build teams that care.
-  </p>
+              <p className="text-foreground font-semibold">
+               As a Doctor, I Serve.
+               <br />
+               As a Father, I Empathize.
+               <br />
+               As an Entrepreneur, I Build Teams that Care.
+              </p>
 
-  <p>
-    Building India's first Emergency 1st Hospital.
-  </p>
-</div>
+              <p>
+               Let’s build India’s Smart Community-Based Emergency Care Ecosystem together.
+              </p>
+            </div>
 
               </div>
             </motion.div>
