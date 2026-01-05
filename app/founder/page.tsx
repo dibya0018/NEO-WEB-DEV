@@ -7,7 +7,7 @@ import { Footer } from "@/components/footer"
 import { EmergencyCTA } from "@/components/emergency-cta"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { Quote, Phone, ArrowRight, Heart, Clock, Shield, Linkedin, Twitter } from "lucide-react"
+import { Instagram, Linkedin, Quote, Phone, ArrowRight, Heart, Clock, Shield, Twitter } from "lucide-react"
 
 export default function FounderPage() {
   return (
@@ -105,12 +105,44 @@ export default function FounderPage() {
                             <Linkedin className="h-5 w-5" />
                           </a>
                           <a 
-                            href="#" 
-                            className="text-muted-foreground hover:text-[#65349E] transition-colors"
-                            aria-label="Twitter"
+                          href="https://x.com/Ramesh_Karmegam" 
+                          className="text-muted-foreground hover:text-black transition-colors"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label="X (formerly Twitter)"
                           >
-                            <Twitter className="h-5 w-5" />
+                         <svg 
+                          className="h-5 w-5" 
+                          viewBox="0 0 24 24" 
+                          fill="currentColor"
+                          >
+                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                          </svg>
                           </a>
+                         <a 
+                          href="https://www.facebook.com/profile.php?id=61586082509305" 
+                          className="text-muted-foreground hover:text-[#1877F2] transition-colors"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label="Facebook"
+                         >
+                       <svg 
+                       className="h-5 w-5" 
+                       viewBox="0 0 24 24" 
+                       fill="currentColor"
+                       >
+                         <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" />
+                       </svg>
+                      </a>
+                      <a 
+                     href="https://www.instagram.com/drrameshkarmegam/?igsh=ZW9zamxwYTlpbW85&utm_source=qr#" 
+                     className="text-muted-foreground hover:text-[#E1306C] transition-colors"
+                     target="_blank"
+                     rel="noopener noreferrer"
+                     aria-label="Instagram"
+                     >
+                     <Instagram className="h-5 w-5" />
+                     </a>
                         </div>
                       </div>
                     </CardContent>
